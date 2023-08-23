@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trang chu</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    </head>
+
+    <body>
+        <!--header-->
+        <header>
+            <div class="logo">
+                <img src="img1/highlands-coffee-red-logo.webp">
+            </div>
+            <div class="menu">
+                <li><a 
+                    onclick="handleTrangchu()"
+                    href="#">Trang chủ</a>  </li>
+                <li><a 
+                    onclick="handleFood()"
+                    href="#">Đồ ăn</a>  </li>
+                <li><a 
+                    onclick="handleDrink()"
+                    href="#">Đồ uống</a>  </li>
+                <li><a 
+                    onclick="handleNews()"
+                    href="#">Tin Tuc</a>  </li>
+                <li><a 
+                    onclick="handleAddress()"
+                    href="#">Địa chỉ</a> </li>
+                <li><a 
+                    onclick="handleBill()"
+                    href="#">Thanh toán</a>  </li>
+            </div>
+            <div class="other">
+                <li><input placeholder="Tìm Kiếm " type="text"> <i class='bx bx-search'></i></li>
+                <li><a href="#"> <i class='bx bx-user'></i> </a> </li>
+                <li><a href="#"> <i class='bx bx-shopping-bag' ></i> </a> </li>
+            </div>
+        </header>
+        <!--payment-->
+        
+        
+        <section class="app-container">
+            <p>Tai ung dung</p>
+            <div class="app">
+                <a href="#"> <img src="img1/app Store.png" alt="logo app store"> </a>
+                <a href="#"> <img src="img1/CH play.png" alt="logo ch play"> </a>
+            </div>
+            <p>Nhap ban tin</p>
+            <input type="text" placeholder="Nhap email cua ban ...">
+        </section>
+
+        <!--footer-->
+        <div class="footer-top">
+            <li> <a href=""> <img src="" alt=""> </a> </li>
+            <li> Lien he </li>
+            <li> Tuyen dung </li>
+            <li> Gioi thieu </li>
+            <li>
+                <i class='bx bxl-facebook'></i>
+                <i class='bx bxl-youtube'></i>
+                <i class='bx bxl-twitter'></i>
+            </li>
+        </div>
+        <div class="footer-center">
+            <p>
+                Dia chi cong ty: Hoc vien cong nghe buu chinh vien thong <br><!--xuong dong-->
+                Dat hang online: <b>0386527618</b>
+            </p>
+        </div>
+        <div class="footer-bottom">
+            @tranvanhung
+        </div>
+    </body>
+
+    <script>
+            
+        const header = document.querySelector("header") 
+        window.addEventListener("scroll",function(){
+            x = window.pageYOffset
+            if(x>0){
+                header.classList.add("sticky")
+            }
+            else{
+                header.classList.remove("sticky")
+            }
+        })
+    </script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="/js/jwt-decode.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/home_page.js"></script>
+
+</html>

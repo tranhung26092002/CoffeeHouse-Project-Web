@@ -3,11 +3,11 @@ function handleTrangchu(){
 }
 
 function handleFood(){
-    window.location.href = '/doanvat.html';
+    window.location.href = '/Food.html';
 }
 
 function handleDrink(){
-    window.location.href = '/drink_page.html';
+    window.location.href = '/Drink.html';
 }
 
 function handleBill(){

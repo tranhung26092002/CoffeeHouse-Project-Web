@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background: url(/client/img1/nen1.png);
+    background: url(/img1/nen1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
