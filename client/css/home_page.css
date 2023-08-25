@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background: url(/img1/nen1.png);
+    background: url(/client/img1/nen1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -25,6 +25,7 @@ a{
     position: relative;
     background-color: transparent;
 }
+
 /*header*/
 header {
     display: flex;

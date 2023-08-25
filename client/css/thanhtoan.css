@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đặt cho phần tử bao quanh tất cả các sản phẩm */
+.checkout-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Màu nền với độ trong suốt */
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px; /* Để bo tròn các góc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+}
+
+/* Cập nhật CSS cho các sản phẩm, input và nút xóa như trong ví dụ trước */
+
+
+h1 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.product-list {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: none ;
+    padding: 10px;
+    
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.product-name {
+    flex: 1;
+}
+
+.product-price {
+    flex-basis: 80px;
+    text-align: right;
+}
+
+.product-quantity {
+    height: 30px;
+    width: 40px;
+    text-align: center;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.remove-product {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-product:hover {
+    background-color: #ff3333;
+}
+
+.total {
+    max-width: 600px;
+    margin: 20px auto;
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    align-items: center;
+}
+
+.total-label {
+    flex: 1;
+    font-size: 18px;
+}
+
+.total-amount {
+    flex-basis: 80px;
+    text-align: right;
+    font-size: 18px;
+}

@@ -7,7 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Trang chu</title>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style2.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     </head>
@@ -44,9 +45,60 @@
                 <li><a href="#"> <i class='bx bx-shopping-bag' ></i> </a> </li>
             </div>
         </header>
-        <!--payment-->
+        <!--Food-->
         
-        
+        <main>
+            <section class="product">
+              <h2>Bánh tráng </h2>
+              <img src="food/banhtrang.jpg" alt="Bánh tráng">
+              <p>Giá: 30.000 đồng</p>
+              <button onclick="addToCartFood('Bánh tráng', '30000')">Mua ngay</button>
+            </section>
+      
+            <section class="product">
+              <h2>Bánh tráng trộn</h2>
+              <img src="food/banhtrangtron.jpg" alt="Bánh tráng trộn">
+              <p>Giá: 25.000 đồng</p>
+              <button onclick="addToCartFood('Bánh tráng trộn', '25000')">Mua ngay</button>
+            </section>
+      
+            <section class="product">
+              <h2>Chè chuối</h2>
+              <img src="food/chebuoi.jpg" alt="Chè chuối">
+              <p>Giá: 20.000 đồng</p>
+              <button onclick="addToCartFood('Chè chuối', '20000')">Mua ngay</button>
+            </section>
+            
+            <section class="product">
+              <h2>Khô bò</h2>
+              <img src="food/khobo.jpg" alt="Khô bò">
+              <p>Giá: 15.000 đồng</p>
+              <button onclick="addToCartFood('Khô bò', '15000')">Mua ngay</button>
+            </section>
+      
+            <section class="product">
+              <h2>Mực rim</h2>
+              <img src="food/mucrim.jpg" alt="Mực rim">
+              <p>Giá: 35.000 đồng</p>
+              <button onclick="addToCartFood('Mực rim', '35000')">Mua ngay</button>
+            </section>
+      
+            <section class="product">
+              <h2>Rong biển</h2>
+              <img src="food/rongbinen.jpg" alt="Rong biển">
+              <p>Giá: 10.000 đồng</p>
+              <button onclick="addToCartFood('Rong biển', '10000')">Mua ngay</button>
+            </section>
+
+            <section class="product">
+                <h2>Xoài lắc</h2>
+                <img src="food/xoailac.jpg" alt="Xoài lắc">
+                <p>Giá: 10.000 đồng</p>
+                <button onclick="addToCartFood('Xoài lắc', '10000')">Mua ngay</button>
+            </section>
+        </main>
+
+        <!--App-->
         <section class="app-container">
             <p>Tai ung dung</p>
             <div class="app">
@@ -94,8 +146,9 @@
         })
     </script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="/js/jwt-decode.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/home_page.js"></script>
+    <script src="js/jwt-decode.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home_page.js"></script>
+    <script src="js/food.js"></script>
 
 </html>

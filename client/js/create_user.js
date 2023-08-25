@@ -13,7 +13,7 @@ async function handleSubmitAddUser(){
             role: role
         })
         if(response.status === 200){
-            window.location.href = "/admin_page.html";
+            window.location.href = "admin_page.html";
         }
     } catch (error) {
         console.log('error');

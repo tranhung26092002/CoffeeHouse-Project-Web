@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    background: url(/img1/nen1.png);
+    background: url(/client/img1/nen1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -79,6 +79,7 @@ header:hover{
     position: absolute;
     right: 10px;
 }
+
 
 .delivery-top-wrap{
     display: flex;
@@ -228,6 +229,8 @@ header:hover{
 .delivery-content-right table tr td:first-child{
     text-align: left;
 }
+
+
 /*---------------------Payment-------------------*/
 .payment{
     padding: 100px 0;
@@ -337,6 +340,7 @@ header:hover{
     flex: 0.75;
     
 }
+
 /* local*/
 .local{
     padding: 100px 0;
@@ -533,6 +537,8 @@ footer{
     text-align: center;
     margin: 20px 0;
 }
+
+
 .searchbox {
     width: 100%;
     position: relative
