@@ -34,6 +34,7 @@ const createProduct = async (req, res) => {
         userId: user._id,
         name: nameproduct,
         price: priceproduct,
+        quantity: 1,
       });
       return res.status(200).send('register product');
   }
@@ -54,8 +55,28 @@ const deleteProduct = async (req, res) => {
   } 
 }
 
+const updateProduct = async (req, res) => {
+  try {
+      // delete food
+      const productId = req.params.productId;
+      const newQuantity = req.body.quantity;
+
+      const product = await productModel.findById(productId);
+
+      // Cập nhật số lượng sản phẩm
+      product.quantity = newQuantity;
+
+      // Lưu sản phẩm đã cập nhật vào cơ sở dữ liệu
+      const updatedProduct = await product.save();
+      return res.status(200).send('update product success');
+  } catch (error) {
+      // log error
+  } 
+}
+
 module.exports = {
     getList: getList,
     createProduct: createProduct,
     deleteProduct: deleteProduct,
+    updateProduct: updateProduct,
 };

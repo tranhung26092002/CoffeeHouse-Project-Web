@@ -10,6 +10,7 @@ const ProductSchema = new mongoose.Schema({
         unique: true // Đánh dấu trường name là duy nhất
     },
     price: Number,
+    quantity: Number,
 });
 
 const ProductModel = mongoose.model('Product',ProductSchema);

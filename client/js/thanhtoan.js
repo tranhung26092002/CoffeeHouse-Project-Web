@@ -6,7 +6,7 @@ async function getList(){
         displayProducts(response);
     } catch (error) {
         //error
-        if(error.response.status === 401){
+        if(error.response && error.response.status === 401){
             window.location.href = '/login.html';
         }
     }
@@ -31,18 +31,27 @@ function showListProduct(response){
         htmlProduct +=`<tr>
                         <td>${product.name}</td>
                         <td>${product.price} đồng</td>
-                        <td><input type="number"  value="1" min="1"></td>
+                        <td>
+                            <div class="quantity-container">
+                            <button class="quantity"  onclick="decrementQuantity('${product._id}')">-</button>
+                            <input class="quantity_input" id="${product._id}" type="number" role="spinbutton" aria-valuenow="1" value="${product.quantity}">
+                            <button class="quantity"  onclick="incrementQuantity('${product._id}')">+</button>
+                            </div> 
+                        </td>
                         <td>
                             <button 
                                 id="${product._id}"
                                 class="delete"
-                                onclick="handleDeleteProduct(this.id)">Xóa
+                                onclick="handleDeleteProduct(this.id)">X
                             </button>
                         </td>
                     </tr>`;
                     
         const productPrice = parseFloat(product.price);
-        totalAmount += productPrice;
+        const productQuantity = parseInt(product.quantity);
+
+        const productTotal = productPrice * productQuantity;
+        totalAmount += productTotal;    
     });
     
     htmlProduct += `   </tbody>
@@ -52,8 +61,7 @@ function showListProduct(response){
     document.getElementById('total-amount').textContent =`${totalAmount} đồng`;
 
 }
-  
-
+ 
 
 async function handleDeleteProduct(productId){
     try {
@@ -68,3 +76,43 @@ async function handleDeleteProduct(productId){
         }
     }
 }
+
+async function decrementQuantity(productId){
+    try {
+        // lay thong tin 
+        const quantityInput = document.getElementById(productId);
+        const quantity = parseInt(quantityInput.value);
+
+        // Giảm giá trị số lượng
+        if (quantity > 1) {
+        quantityInput.value = quantity - 1;
+        }
+
+        const response = await axios.put(`auth/user/products/update/${productId}`,{
+            quantity: quantityInput.value,
+        });
+        if(response.status === 200){
+            window.location.reload();
+        }    
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function incrementQuantity(productId) {
+    try {
+        // Lấy thông tin số lượng
+        const quantityInput = document.getElementById(productId);
+        const quantity = parseInt(quantityInput.value) + 1;
+        quantityInput.value = quantity;
+
+        const response = await axios.put(`auth/user/products/update/${productId}`,{
+            quantity: quantityInput.value,
+        });
+        if(response.status === 200){
+            window.location.reload();
+        }    
+    } catch (error) {
+        console.error(error);
+    }
+}
+

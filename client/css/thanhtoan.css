@@ -7,7 +7,7 @@ body {
 
 /* Đặt cho phần tử bao quanh tất cả các sản phẩm */
 .checkout-container , .container_methor,.container_pay{
-    background-color: rgba(255, 255, 255, 0.8); /* Màu nền với độ trong suốt */
+    background-color: rgba(255, 255, 255, 0.9); /* Màu nền với độ trong suốt */
     max-width: 600px;
     margin: 20px auto;
     border: 1px solid #ccc;
@@ -15,8 +15,6 @@ body {
     border-radius: 10px; /* Để bo tròn các góc */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
 }
-
-/* Cập nhật CSS cho các sản phẩm, input và nút xóa như trong ví dụ trước */
 
 /* CSS cho danh mục thanh toán */
 
@@ -46,14 +44,46 @@ th {
 }
 
 
-/* Định dạng cho số lượng sản phẩm */
-input[type="number"] {
-    width: 40px;
-    text-align: center;
+
+/* CSS cho container chứa nút tăng/giảm và input số lượng */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
 }
 
+.quantity {
+    background-color: none;
+    color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
+.quantity_input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+/* Delete */
+.delete {
+    background-color: rgb(255, 37, 37);
+    color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
 
+/* Total Money */
 .total {
     max-width: 600px;
     margin: 20px auto;

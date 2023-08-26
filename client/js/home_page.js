@@ -36,7 +36,7 @@ async function getName(){
 
     } catch (error) {
         //error
-        if(error.response.status === 401){
+        if(error.response && error.response.status === 401){
             window.location.href = '/login.html';
         }
     }
