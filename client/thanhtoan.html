@@ -66,29 +66,21 @@
 
             <div class="checkout-container">
                 <h1>Thanh toán sản phẩm</h1>
-    
-                <!-- Danh sách sản phẩm đã chọn -->
-                <div class="food_list">
+                
+                <div class="list_container">
 
-                    <!--
-                    <div class="product">
-                        <span class="product-name">Sản phẩm 1</span>
-                        <span class="product-price">$10.00</span>
-                        <input type="number" class="product-quantity" value="1" min="1">
-                        <button class="remove-product">Xóa</button>
-                    </div> 
-                    -->
-                    
+                    <!-- Danh sách sản phẩm đã chọn -->
+
                 </div>
                 
                 <!-- Tổng số tiền sản phẩm -->
                 <div class="total">
                     <span class="total-label">Tổng cộng:</span>
-                    <span class="total-amount">$25.00</span>
+                    <span id="total-amount"> </span>
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container_methor">
                 <div class="payment-content row">
                     <div class="payment-content-left">
                         <div class="payment-content-left-method-delivery">
@@ -131,18 +123,20 @@
                 </div>
             </div>
 
-            <div class="payment-content-right">
-                <div class="payment-content-right-button">
-                    <input type="text" placeholder="Số điện thoại">
-                </div>
-                <div class="payment-content-right-button">
-                    <input type="text" placeholder="Gmail">
-                </div>
-                <div class="payment-content-right-button">
-                    <input type="text" placeholder="Mã giảm giá">
-                </div>
-                <div class="payment-content-right-payment">
-                    <button onclick="checkout()">TIẾP TỤC THANH TOÁN</button>
+            <div class="container_pay">
+                <div class="payment-content-right">
+                    <div class="payment-content-right-button">
+                        <input type="text" placeholder="Số điện thoại">
+                    </div>
+                    <div class="payment-content-right-button">
+                        <input type="text" placeholder="Gmail">
+                    </div>
+                    <div class="payment-content-right-button">
+                        <input type="text" placeholder="Mã giảm giá">
+                    </div>
+                    <div class="payment-content-right-payment">
+                        <button onclick="checkout()">TIẾP TỤC THANH TOÁN</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -191,42 +185,6 @@
             }
         })
     </script>
-
-    <script>
-        // Lấy danh sách các sản phẩm và nút xóa
-        const products = document.querySelectorAll('.product');
-        const removeButtons = document.querySelectorAll('.remove-product');
-    
-        // Bắt sự kiện click trên nút xóa
-        removeButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                // Xóa sản phẩm khỏi danh sách
-                products[index].remove();
-                // Gọi hàm cập nhật tổng số tiền
-                updateTotal();
-            });
-        });
-    
-        // Bắt sự kiện thay đổi số lượng sản phẩm
-        const quantityInputs = document.querySelectorAll('.product-quantity');
-        quantityInputs.forEach((input, index) => {
-            input.addEventListener('input', () => {
-                // Gọi hàm cập nhật tổng số tiền
-                updateTotal();
-            });
-        });
-    
-        // Hàm cập nhật tổng số tiền
-        function updateTotal() {
-            let totalPrice = 0;
-            products.forEach((product, index) => {
-                const price = parseFloat(product.querySelector('.product-price').textContent.replace('$', ''));
-                const quantity = parseInt(product.querySelector('.product-quantity').value);
-                totalPrice += price * quantity;
-            });
-            document.querySelector('.total-amount').textContent = `$${totalPrice.toFixed(2)}`;
-        }
-    </script>
     
     <script>
         function checkout() {
@@ -247,5 +205,6 @@
     <script src="js/jwt-decode.js"></script>
     <script src="js/common.js"></script>
     <script src="js/home_page.js"></script>
+    <script src="js/thanhtoan.js"></script>
 
 </html>

@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
-const foodModel = require('../Models/FoodModel');
+const productModel = require('../Models/ProductModel');
 const userModel = require('../Models/UserModel');
 
-const getListTask = async (req, res) => {
+const getList = async (req, res) => {
   try {
     const bearerHeader = req.headers['authorization'];
     const accessToken = bearerHeader.split(' ')[1];
@@ -10,14 +10,14 @@ const getListTask = async (req, res) => {
     const userId = decodeJwt._id;
     const user = await userModel.findById(userId);
     
-    const foods = await foodModel.find({ userId: user._id });
-    return res.status(200).send(foods);
+    const products = await productModel.find({ userId: user._id });
+    return res.status(200).send(products);
   } catch (error) {
       // log error
   }
 }
 
-const createTask = async (req, res) => {
+const createProduct = async (req, res) => {
   try{
       // get infor client
       const bearerHeader = req.headers['authorization'];
@@ -26,18 +26,16 @@ const createTask = async (req, res) => {
       const userId = decodeJwt._id;
       const user = await userModel.findById(userId);
       
-      const namefood = req.body.name_food;
-      const pricefood = req.body.price_food;
+      const nameproduct = req.body.name_product;
+      const priceproduct = req.body.price_product;
 
       // creat data to database
-      await foodModel.create({
+      await productModel.create({
         userId: user._id,
-        food:{
-          name: namefood,
-          price: pricefood,
-        },
+        name: nameproduct,
+        price: priceproduct,
       });
-      return res.status(200).send('register task');
+      return res.status(200).send('register product');
   }
   catch(error){
       console.log('error',error);
@@ -45,19 +43,19 @@ const createTask = async (req, res) => {
 }
 
 
-const deleteTask = async (req, res) => {
+const deleteProduct = async (req, res) => {
   try {
-      // delete user
-      const taskId = req.params.taskId;
-      await taskModel.findByIdAndRemove(taskId);
-      return res.status(200).send('delete task success');
+      // delete food
+      const productId = req.params.productId;
+      await productModel.findByIdAndRemove(productId);
+      return res.status(200).send('delete product success');
   } catch (error) {
       // log error
   } 
 }
 
 module.exports = {
-    createTask: createTask,
-    getListTask: getListTask,
-    deleteTask: deleteTask,
+    getList: getList,
+    createProduct: createProduct,
+    deleteProduct: deleteProduct,
 };

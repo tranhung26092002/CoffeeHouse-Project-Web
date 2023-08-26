@@ -1,13 +1,12 @@
-async function addToCartFood(productName, productPrice) {
+async function addToCartProduct(productName, productPrice) {
     try {
         // Tạo một đối tượng chứa thông tin sản phẩm
         const productData = {
-            name_food: productName,
-            price_food: productPrice
+            name_product: productName,
+            price_product: productPrice,
         };
 
-        // Gửi yêu cầu POST đến máy chủ bất đồng bộ sử dụng fetch
-        const response = await axios.post('auth/user/foods/create', productData);
+        const response = await axios.post('auth/user/products/create', productData);
 
         if (response.status === 200) {
             console.log(response.data.message); // In ra thông báo từ máy chủ

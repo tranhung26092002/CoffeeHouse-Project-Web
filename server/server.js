@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const userRouter = require('./Router/UserRouter');
 const authRouter = require('./Router/AuthRouter');
-const foodRouter = require('./Router/FoodRouter');
+const productRouter = require('./Router/ProductRouter');
 
 const connectDb = require('./Services/ConnectDbServices');
 
@@ -22,6 +22,6 @@ connectDb();
 // middleware router
 app.use('/api/auth', authRouter);
 app.use('/auth/admin', userRouter);
-app.use('/auth/user', foodRouter);
+app.use('/auth/user', productRouter);
 
 app.listen(process.env.PORT, () => console.log(`Server running on ${process.env.PORT}`));

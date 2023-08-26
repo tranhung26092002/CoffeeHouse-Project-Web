@@ -6,7 +6,7 @@ body {
 }
 
 /* Đặt cho phần tử bao quanh tất cả các sản phẩm */
-.checkout-container {
+.checkout-container , .container_methor,.container_pay{
     background-color: rgba(255, 255, 255, 0.8); /* Màu nền với độ trong suốt */
     max-width: 600px;
     margin: 20px auto;
@@ -18,6 +18,7 @@ body {
 
 /* Cập nhật CSS cho các sản phẩm, input và nút xóa như trong ví dụ trước */
 
+/* CSS cho danh mục thanh toán */
 
 h1 {
     text-align: center;
@@ -25,51 +26,33 @@ h1 {
     padding: 10px;
 }
 
-.product-list {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: none ;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
     padding: 10px;
-    
+    text-align: center;
 }
 
-.product {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    align-items: center;
+th {
+    background-color: #f2f2f2;
 }
 
-.product-name {
-    flex: 1;
-}
 
-.product-price {
-    flex-basis: 80px;
-    text-align: right;
-}
-
-.product-quantity {
-    height: 30px;
+/* Định dạng cho số lượng sản phẩm */
+input[type="number"] {
     width: 40px;
     text-align: center;
-    margin: 0 10px;
-    border-radius: 5px;
 }
 
-.remove-product {
-    background-color: #ff6666;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-.remove-product:hover {
-    background-color: #ff3333;
-}
 
 .total {
     max-width: 600px;

@@ -1,23 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const FoodController = require('../Controller/FoodController');
+const ProductController = require('../Controller/ProductController');
 const authMiddleware = require('../Middleware/AuthMiddleware');
 
 // Đăng ký route để lấy danh sách tasks của người dùng
-router.get('/foods',[
+router.get('/products',[
     authMiddleware.isAuthentication
-], FoodController.getListTask);
+], ProductController.getList);
 
 // Đăng ký route để tạo task mới
-router.post('/foods/create',[
+router.post('/products/create',[
     authMiddleware.isAuthentication
-], FoodController.createTask);
+], ProductController.createProduct);
 
 // Đăng ký route để xóa task
-router.delete('/foods/delete/:taskId',[
+router.delete('/products/delete/:productId',[
     authMiddleware.isAuthentication
-], FoodController.deleteTask);
-
+], ProductController.deleteProduct);
 
 
 module.exports = router;
