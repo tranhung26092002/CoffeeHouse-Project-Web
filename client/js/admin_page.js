@@ -2,7 +2,7 @@
 async function getListUser(){
     try {
         // call api get listuser
-        const response = await axios.get('auth/admin/user');
+        const response = await axios.get('auth/admin/users');
         showListUser(response);
         //show name
         const accessToken = localStorage.getItem('access_token')
@@ -16,6 +16,7 @@ async function getListUser(){
         }
     }
 }
+getListUser();
 
 function showListUser(response){
     let htmlUser = `<table class="table table-hover text-nowrap">
@@ -25,6 +26,7 @@ function showListUser(response){
                                 <th>Username</th>
                                 <th>Role</th>
                                 <th>Email</th>
+                                <th>Action</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,6 +43,12 @@ function showListUser(response){
                             type="button" class="btn btn-danger" 
                             onclick="handleDeleteUser(this.id)">Delete</button>
                         </td>
+                        <td>
+                            <button
+                            id= "${user._id}"
+                            type="button" class="btn btn-primary" 
+                            onclick="handleUpdateUser(this.id)">Update</button>
+                        </td>
                     </tr>`;
     });
     htmlUser += `   </tbody>
@@ -49,10 +57,15 @@ function showListUser(response){
 }
 
 
+function handleUpdateUser(userId){
+    window.location.href = `/update_user.html?userId=${userId}`;
+}
+
+
 async function handleDeleteUser(userId){
     try {
         // call api 
-        const response = await axios.delete(`auth/admin/user/delete/${userId}`);
+        const response = await axios.delete(`auth/admin/users/delete/${userId}`);
         if(response.status === 200){
             window.location.reload();
         }
@@ -72,4 +85,3 @@ function handleLogoutUser(){
     window.location.href = '/login.html';
 }
 
-getListUser();

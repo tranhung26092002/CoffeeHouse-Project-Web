@@ -6,7 +6,7 @@ async function handleSubmitAddUser(){
         const password = document.getElementById('new_password').value;
         const role = document.getElementById('role').value;
         // gui value
-        const response =await axios.post('auth/admin/user/create', {
+        const response =await axios.post('auth/admin/users/create', {
             new_username: username,
             new_email: email,
             new_password: password,

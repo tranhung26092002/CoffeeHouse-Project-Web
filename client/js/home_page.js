@@ -22,6 +22,10 @@ function handleAddress(){
     window.location.href = 'diachi.html';
 }
 
+function inforUser(){
+    window.location.href = 'user.html';
+}
+
 function handleLogoutUser(){
     localStorage.removeItem('access_token');
     window.location.href = 'login.html';
