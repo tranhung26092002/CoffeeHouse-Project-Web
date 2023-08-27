@@ -80,6 +80,55 @@ header:hover{
     right: 10px;
 }
 
+/*---------------------News-------------------*/
+/* Thiết lập kiểu cho phần tổng thể */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Cách nhau bên trái và bên phải */
+}
+
+/* Thiết lập kiểu cho mỗi tin tức */
+.media {
+    flex-basis: calc(33.33% - 20px); /* Chia 3 cột và thêm khoảng cách */
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #fff; /* Nền trắng */
+    border: 1px solid #ccc; /* Đường viền xung quanh */
+    padding: 20px; /* Khoảng cách bên trong */
+}
+
+/* Thiết lập kiểu cho phần hình ảnh */
+.media-object {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Thiết lập kiểu cho phần nội dung chính */
+.media-body {
+    margin-top: 10px;
+}
+
+.media-heading a {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333; /* Màu chữ */
+}
+
+.time {
+    font-size: 12px;
+    color: #777; /* Màu chữ nhỏ */
+}
+
+.description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555; /* Màu chữ mô tả */
+}
+
+
 
 
 /*---------------------Payment-------------------*/
@@ -232,74 +281,61 @@ header:hover{
 .local-top-adress i{
     color: #0DB7EA;
 }
-.local-content-left{
-    width: 60%;
-}
-.local-content-right{
-    width: 40%;
-    border-left: 2px solid #ddd;
-    padding-left: 12px;
-}
-.local-content-left p,label{
-    font-size: 12px;
-    font-family: var(--margin-text-font);
-}
-.local-content-right-button{
-    display: flex;
-    padding: 12px 0;
-    border-bottom: 1px dashed #dddddd;
 
+/* Khung viền nền trắng cho store-locations */
+.store-locations {
+    background: rgba(255, 255, 255, 0.9); /* Sử dụng rgba để làm trong suốt */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 70%; /* Đặt chiều rộng của store-locations */
+    margin: 0 auto; /* Căn giữa theo chiều ngang */}
+
+/* Phần tiêu đề */
+.store-title {
+    margin-bottom: 10px;
 }
-.local-content-right-button input{
-    height: 30px;
-    width: 200px;
-    margin-right: 100px;
-    padding-left: 12px;
+
+.store-name {
+    font-size: 24px;
+    font-weight: bold;
 }
-.local-content-right-button button {
-    height: 30px;
-    width: 100px;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-.local-content-right-mnv{
-    margin-top: 20px;
-}
-.local-content-right-mnv select{
-    height: 30px;
+
+/* Dropdown chọn địa chỉ */
+#location-selector {
     width: 100%;
-    color: #75758A;
-    padding-left: 12px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-}
-.local-content-right-local{
-    margin-top: 50px;
-    align-items: center;
-    text-align: center;
-}
-.local-content-right-local button{
-    height: 35px;
-    padding: 0 20px;
-    font-size: 12px;
-    color: black;
-    cursor: pointer;
-    transition: all 0.3s ease ;
-    border: 2px solid black;
-
-}
-.local-content-right-local button:hover{
-    background-color: black;
-    color: #fff;
-}
-.local-content-left-method-local-item-img{
+/* Phần thông tin cửa hàng */
+.store-info {
+    margin-top: 15px;
     display: flex;
-    height: 50px;
-    flex: 0.75;
-    
+    align-items: center;
 }
 
+.store-info i {
+    color: #007bff;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.store-phone {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.store-address {
+    font-size: 16px;
+    color: #555;
+    margin-left: 10px;
+}
+
+
+/*--------------App-----------*/
 .app-container{
     text-align: center;
     align-items: center;
@@ -360,47 +396,3 @@ footer{
     margin: 20px 0;
 }
 
-
-.searchbox {
-    width: 100%;
-    position: relative
-}
-
-.searchTerm {
-    border: 3px solid #242221;
-    border-radius: 5px;
-    outline: none;
-    color: #E3C376;
-    font-weight: bold;
-}
-
-.searchTerm:focus {
-    color: #242221;
-}
-
-.searchButton {
-    border: 1px solid #242221;
-    background: #242221;
-    text-align: center;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-#loadingMain {
-    position: absolute;
-    width: 100%;
-    height: calc(100%);
-    z-index: 99;
-    background: rgba(0, 0, 0, 0.5);
-    margin-left: -15px;
-    margin-right: -15px;
-    padding: 20px;
-}
-
-@media (max-width: 576px){
-    .stores-list .stores-cell{
-        margin-bottom: 15px;
-    }
-}

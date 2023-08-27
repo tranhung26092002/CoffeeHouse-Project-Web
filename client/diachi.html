@@ -50,58 +50,59 @@
                 <div class="local-top-wrap"> 
                     <div class="local-top">
                         <div class="local-top-delivery local-top-item">
-                        <i class='fas fa-newspaper' ></i>
+                        <i class="fas fa-newspaper" onclick="handleNews()"></i>
                         </div>
                         <div class="local-top-adress local-top-item">
                             <i class="fas fa-map-marker-alt "></i>
                         </div>
                         <div class="local-top-local local-top-item"> 
-                            <i class="fas fa-money-check-alt"></i>
+                            <i class="fas fa-money-check-alt" onclick="handleBill()"></i>
                         </div>
                     </div>
                 </div>
             </div>  
-            <div class="payment-content-right">
-                <div class="payment-content-right-button">
-                    <div class="main-title">
-                        <h1 class="title-1">Các cửa hàng hoạt động </h1>
+            <div class="store-locations">
+                <div class="store-location-item">
+                    <div class="store-title">
+                        <h1 class="store-name">Các cửa hàng hoạt động </h1>
                     </div>
                 </div>
             
-                <div class="payment-content-right-mnv">
-                    <select name="" id="">
-                        <option value="">Địa chỉ</option>
-                        <option value="">Hà Đông</option>
-                        <option value="">Cầu Giấy</option>
-                        <option value="">Thanh Xuân</option>
-                        <option value="">Ba Đình</option>
-                        <option value="">Hai Bà Trưng</option>
-                        <option value="">Tây Hồ</option>
-                        <option value="">Long Biên</option>
-                        <option value="">Hoàng Mai</option>
+                <div class="store-location-selector">
+                    <select name="" id="location-selector">
+                        <option value="">Chọn địa chỉ</option>
+                        <option value="ha-dong">Hà Đông</option>
+                        <option value="cau-giay">Cầu Giấy</option>
+                        <option value="thanh-xuan">Thanh Xuân</option>
+                        <option value="ba-dinh">Ba Đình</option>
+                        <option value="hai-ba-trung">Hai Bà Trưng</option>
+                        <option value="tay-ho">Tây Hồ</option>
+                        <option value="long-bien">Long Biên</option>
+                        <option value="hoang-mai">Hoàng Mai</option>
                     </select>
-                    <div class="content stores-list">
-                        <div class="store-content pull-right">                                    
+                    <div class="store-details">
+                        <div class="store-info">                                    
                             <i class="fas fa-map-marker-alt "></i>                             
-                            <span> Aeon Mall Long Biên</span>                                
+                            <span class="store-name"> Aeon Mall Long Biên</span>                                
                         </div>                                
-                        <div><i class="fas fa-phone-alt"></i> Số điện thoại: <a style="color:#007bff;text-decoration: underline" href="tel:02466512026">0123456789</a></div>                                
-                        <div>Địa chỉ: T1-TTTM Aeon Mall, Long Biên, Hà Nội</div>
-                        <div class="store-content pull-right">                                    
+                        <div class="store-info"><i class="fas fa-phone-alt"></i> Số điện thoại: <a class="store-phone" href="tel:02466512026">0123456789</a></div>                                
+                        <div class="store-info">Địa chỉ: T1-TTTM Aeon Mall, Long Biên, Hà Nội</div>
+                        <div class="store-info">                                    
                             <i class="fas fa-map-marker-alt "></i>                             
-                            <span> Aeon Mall Hà Đông</span>                                
+                            <span class="store-name"> Aeon Mall Hà Đông</span>                                
                         </div>                                
-                        <div><i class="fas fa-phone-alt"></i> Số điện thoại: <a style="color:#007bff;text-decoration: underline" href="tel:02466512026">0123456789</a></div>                                
-                        <div>Địa chỉ: T1-TTTM Hà Đông,  Dương Nội, Hà Đông, Hà Nội</div>
-                        <div class="store-content pull-right">                                    
+                        <div class="store-info"><i class="fas fa-phone-alt"></i> Số điện thoại: <a class="store-phone" href="tel:02466512026">0123456789</a></div>                                
+                        <div class="store-info">Địa chỉ: T1-TTTM Hà Đông,  Dương Nội, Hà Đông, Hà Nội</div>
+                        <div class="store-info">                                    
                             <i class="fas fa-map-marker-alt "></i>                             
-                            <span> Học Viện Công Nghệ Bưu Chính Viễn Thông</span>                                
+                            <span class="store-name"> Học Viện Công Nghệ Bưu Chính Viễn Thông</span>                                
                         </div>                                
-                        <div><i class="fas fa-phone-alt"></i> Số điện thoại: <a style="color:#007bff;text-decoration: underline" href="tel:02466512026">0123456789</a></div>                                
-                        <div>Địa chỉ: Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội</div>
+                        <div class="store-info"><i class="fas fa-phone-alt"></i> Số điện thoại: <a class="store-phone" href="tel:02466512026">0123456789</a></div>                                
+                        <div class="store-info">Địa chỉ: Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội</div>
                     </div>
                 </div>
             </div>
+            
         </section>
         
         <section class="app-container">
