@@ -13,6 +13,7 @@ async function handleSubmitAddUser(){
             role: role
         })
         if(response.status === 200){
+            alert('Tạo tài khoản thành công.');
             window.location.href = "admin_page.html";
         }
     } catch (error) {

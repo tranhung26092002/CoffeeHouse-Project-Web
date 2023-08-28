@@ -60,36 +60,27 @@ async function handleSubmitUpdateUser(userId){
         const password = document.getElementById('password').value;
         const new_password = document.getElementById('new_password').value;
         const role = document.getElementById('role').value;
-
-        console.log(new_password);
         
-        // gui value
-        const response =await axios.put(`auth/admin/users/update/${userId}`, {
-            username: username,
-            email: email,
-            password: password,
-            new_password: new_password,
-            role: role
-        })
-        if(response.status === 200){
-            window.location.href = "/admin_page.html";
-            // Hiển thị cửa sổ thông báo xác nhận thành công
-            let message =`Cập nhật thành công\n\n`;
-                        
-            let confirmCheckout = confirm(message);
-            console.log(confirm)
-
-            if (confirmCheckout) {
-                window.location.href = "/admin_page.html";
+        if (new_password === '') {
+            alert('Vui lòng nhập mật khẩu mới.');
+        } else {
+            const response =await axios.put(`auth/admin/users/update/${userId}`, {
+                username: username,
+                email: email,
+                password: password,
+                new_password: new_password,
+                role: role
+            })
+            if(response.status === 200){
+                //Hiển thị cửa sổ thông báo xác nhận thành công
+                alert('Cập nhật thành công.');
+                window.location.href = '/admin_page.html';
             }
         }
     } catch (error) {
         if(error.response && error.response.status === 400){
             // Hiển thị cửa sổ thông báo xác nhận 
-            let message =`Mật khẩu cũ không đúng\n\n`;
-                        
-            let confirmCheckout = confirm(message);
-            console.log(confirm)    
+            alert('Mật khẩu cũ không đúng.');
         }    
     }
 }

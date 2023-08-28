@@ -19,7 +19,7 @@ const register = async (req, res) => {
         return res.status(200).send('register user');
     }
     catch(error){
-        console.log('error',error);
+        return res.status(400).send('error');
     }
 }
 

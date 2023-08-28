@@ -30,8 +30,21 @@ const isAdmin = async (req, res, next) =>{
         return res.status(401).send('Authentication not valid');
     }
 }
+const isManager = async (req, res, next) =>{
+    try {    
+        const userId = req.userId;
+        const user = await userModel.findById(userId);
+        //role is admin
+        if(user.role === 'manager'){
+            next();
+        }
+    } catch (error) {
+        return res.status(401).send('Authentication not valid');
+    }
+}
 
 module.exports ={
     isAuthentication: isAuthentication,
-    isAdmin: isAdmin
+    isAdmin: isAdmin,
+    isManager: isManager,
 }
