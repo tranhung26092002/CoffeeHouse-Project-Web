@@ -30,7 +30,7 @@
                 href="#">Đồ uống</a>  </li>
             <li><a 
                 onclick="handleNews()"
-                href="#">Tin Tuc</a>  </li>
+                href="#">Tin Tức</a>  </li>
             <li><a 
                 onclick="handleAddress()"
                 href="#">Địa chỉ</a> </li>
@@ -40,8 +40,9 @@
         </div>
         <div class="other">
             <li><input placeholder="Tìm Kiếm " type="text"> <i class='bx bx-search'></i></li>
-            <li><a href="#"> <i class='bx bx-user'></i> </a> </li>
-            <li><a href="#"> <i class='bx bx-shopping-bag' ></i> </a> </li>
+            <li> <a href="#"> <i class='bx bx-user' onclick="inforUser()"></i> </a></li> 
+            <li> <a href="#"> <i class="name_user"></i> </a> </li> <!-- display name -->
+            <button type="button" class="btn-primary " onclick="handleLogoutUser()">Logout</button>
         </div>
     </header>
 
