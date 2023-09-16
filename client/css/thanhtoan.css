@@ -105,3 +105,62 @@ th {
     text-align: right;
     font-size: 18px;
 }
+
+/* bill */
+
+.invoice-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.bill-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.bill-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.customer-details,
+.payment-details {
+    flex-basis: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.created-at {
+    flex-basis: 48%;
+    padding: 10px;
+}
+
+.product-list {
+    margin-top: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}

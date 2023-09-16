@@ -18,30 +18,41 @@ const getList = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-  try{
-      // get infor client
-      const bearerHeader = req.headers['authorization'];
-      const accessToken = bearerHeader.split(' ')[1];
-      const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
-      const userId = decodeJwt._id;
-      const user = await userModel.findById(userId);
-      
-      const nameproduct = req.body.name_product;
-      const priceproduct = req.body.price_product;
+  try {
+    // Get user information
+    const bearerHeader = req.headers['authorization'];
+    const accessToken = bearerHeader.split(' ')[1];
+    const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
+    const userId = decodeJwt._id;
+    const user = await userModel.findById(userId);
 
-      // creat data to database
+    const nameproduct = req.body.name_product;
+    const priceproduct = req.body.price_product;
+
+    // Check if the product already exists in the database
+    const existingProduct = await productModel.findOne({ userId: user._id, name: nameproduct });
+
+    if (existingProduct) {
+      // If the product exists, increase the quantity
+      existingProduct.quantity += 1;
+      await existingProduct.save();
+    } else {
+      // If the product doesn't exist, create a new one
       await productModel.create({
         userId: user._id,
         name: nameproduct,
         price: priceproduct,
         quantity: 1,
       });
-      return res.status(200).send('register product');
-  }
-  catch(error){
-      console.log('error',error);
+    }
+    
+    return res.status(200).send('Product added or quantity increased');
+  } catch (error) {
+    console.log('error', error);
+    return res.status(500).send('An error occurred');
   }
 }
+
 
 
 const deleteProduct = async (req, res) => {

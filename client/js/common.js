@@ -3,7 +3,6 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
 
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
-    console.log(config);
     const configUrl = config.url;
     if(configUrl.includes('auth/admin')){
         config.headers['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;

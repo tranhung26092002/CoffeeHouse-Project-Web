@@ -7,7 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Trang chu</title>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="css/home_page.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bill.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     </head>
 
     <body>
@@ -46,38 +49,78 @@
                 <button type="button" class="btn-primary " onclick="handleLogoutUser()">Logout</button>
             </div>
         </header>
-        <!--slide-->
-        <section id="Slider">
-            <div class="aspect-ratio-169">
-                <img src="img1/view.jpg" alt="">
-                <img src="img1/view1.jpg" alt="">
-                <img src="img1/view2.webp" alt="">
-                <img src="img1/do an.jpg" alt="">
-                <img src="img1/do uong.jpg" alt="">
+        
+        <section class="local">
+            <div class="container">
+                <div class="local-top-wrap"> 
+                    <div class="local-top">
+                        <div class="local-top-delivery local-top-item">
+                        <i class="fas fa-newspaper" onclick="handleNews()"></i>
+                        </div>
+                        <div class="local-top-adress local-top-item">
+                            <i class="fas fa-map-marker-alt "></i>
+                        </div>
+                        <div class="local-top-local local-top-item"> 
+                            <i class="fas fa-money-check-alt" onclick="handlePay()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="bill-container">
+                <h1>Hóa đơn</h1>
+                <div class="bill-details">
+                    <div class="customer-details">
+                        <h2>Thông tin khách hàng</h2>
+                        <p>Tên: John Doe</p>
+                        <p>Email: john@example.com</p>
+                        <p>Số điện thoại: 123-456-7890</p>
+                        <p>Địa chỉ: 123 ABC Street, XYZ City</p>
+                    </div>
+                    <div class="payment-details">
+                        <h2>Thông tin thanh toán</h2>
+                        <p>Tổng số tiền: $100.00</p>
+                        <p>Mã giảm giá: ABC123</p>
+                        <p>Phương thức thanh toán: Thẻ tín dụng</p>
+                        <p>Phương thức giao hàng: Giao hàng tận nơi</p>
+                    </div>
+                    
+                </div>
+
+                <div class="created-at">
+                    <h2>Thời gian tạo hóa đơn</h2>
+                    <p>Ngày: <span id="created-date">1/1/2023</span></p>
+                </div>
+
+                <div class="product-list">
+                    <h2>Danh sách sản phẩm</h2>
+                    <ul>
+                        <li>Sản phẩm 1 - $20.00</li>
+                        <li>Sản phẩm 2 - $30.00</li>
+                        <li>Sản phẩm 3 - $50.00</li>
+                    </ul>
+                </div>
+                
             </div>
-            <div class="dot-container">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
+            
         </section>
-        <!--app-->
+        
         <section class="app-container">
-            <p>Tải ứng dụng</p>
+            <p>Tai ung dung</p>
             <div class="app">
                 <a href="#"> <img src="img1/app Store.png" alt="logo app store"> </a>
                 <a href="#"> <img src="img1/CH play.png" alt="logo ch play"> </a>
             </div>
-            <input type="text" placeholder="Nhập email của bạn ...">
+            <p>Nhap ban tin</p>
+            <input type="text" placeholder="Nhap email cua ban ...">
         </section>
+
         <!--footer-->
         <div class="footer-top">
             <li> <a href=""> <img src="" alt=""> </a> </li>
-            <li> Liên hệ </li>
-            <li> Tuyển dụng </li>
-            <li> Giới thiệu </li>
+            <li> Lien he </li>
+            <li> Tuyen dung </li>
+            <li> Gioi thieu </li>
             <li>
                 <i class='bx bxl-facebook'></i>
                 <i class='bx bxl-youtube'></i>
@@ -86,16 +129,16 @@
         </div>
         <div class="footer-center">
             <p>
-                Địa chỉ: Hoc vien cong nghe buu chinh vien thong <br><!--xuong dong-->
-                Đặt hàng online: <b>0386527618</b>
+                Dia chi cong ty: Hoc vien cong nghe buu chinh vien thong <br><!--xuong dong-->
+                Dat hang online: <b>0386527618</b>
             </p>
         </div>
         <div class="footer-bottom">
             @tranvanhung
         </div>
     </body>
+
     <script>
-        
         const header = document.querySelector("header") 
         window.addEventListener("scroll",function(){
             x = window.pageYOffset
@@ -106,37 +149,11 @@
                 header.classList.remove("sticky")
             }
         })
-
-        const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
-        const imgContainer = document.querySelector(".aspect-ratio-169")
-        const dotItem = document.querySelectorAll(".dot")
-        let index = 0
-        let imgNumber = imgPosition.length
-        imgPosition.forEach(function(image,index){
-            image.style.left = index*100 + "%"
-            dotItem[index].addEventListener("click",function(){
-                slider(index)
-            })
-        })
-        function imgSlide (){
-            index ++;
-            if(index >= imgNumber){
-                index=0;
-            }
-            slider(index)
-        }
-        function slider(index){
-            imgContainer.style.left = "-" + index*100 + "%"
-            const dotActive = document.querySelector('.active')
-            dotActive.classList.remove("active")
-            dotItem[index].classList.add("active")
-        }
-        setInterval(imgSlide,7000)  
     </script>
-
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="js/jwt-decode.js"></script>
     <script src="js/common.js"></script>
     <script src="js/home_page.js"></script>
+    <script src="js/bill.js"></script>
 
 </html>

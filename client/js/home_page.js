@@ -10,7 +10,7 @@ function handleDrink(){
     window.location.href = 'Drink.html';
 }
 
-function handleBill(){
+function handlePay(){
     window.location.href = 'thanhtoan.html';
 }
 
@@ -20,6 +20,10 @@ function handleNews(){
 
 function handleAddress(){
     window.location.href = 'diachi.html';
+}
+
+function handleBill(){
+    window.location.href = 'bill.html';
 }
 
 function inforUser(){
