@@ -1,13 +1,12 @@
-//show name manager
-const accessToken = localStorage.getItem("access_token");
-const payloadDecode = jwt_decode(accessToken);
-document.querySelector(".username").innerText = payloadDecode.username;
-
 async function getListUser() {
   try {
     // call api get listuser
-    const response = await axios.get("auth/manager/users");
+    const response = await axios.get("auth/admin/users");
     showListUser(response);
+    //show name
+    const accessToken = localStorage.getItem("access_token");
+    const payloadDecode = jwt_decode(accessToken);
+    document.querySelector(".username").innerText = payloadDecode.username;
   } catch (error) {
     //error
     if (error.response.status === 401) {
@@ -26,6 +25,7 @@ function showListUser(response) {
                                 <th>Role</th>
                                 <th>Email</th>
                                 <th>Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>`;
@@ -38,10 +38,14 @@ function showListUser(response) {
                         <td>
                             <button
                             id= "${user._id}"
+                            type="button" class="btn btn-danger" 
+                            onclick="handleDeleteUser(this.id)">Delete</button>
+                        </td>
+                        <td>
+                            <button
+                            id= "${user._id}"
                             type="button" class="btn btn-primary" 
-                            onclick="handleOrder('${user._id}','${
-      user.username
-    }')">Order</button>
+                            onclick="handleUpdateUser(this.id)">Update</button>
                         </td>
                     </tr>`;
   });
@@ -50,9 +54,26 @@ function showListUser(response) {
   document.querySelector(".list_user").innerHTML = htmlUser;
 }
 
-function handleOrder(userId, username) {
-  // Sử dụng window.location.href để chuyển hướng và truyền tham số qua URL
-  window.location.href = `/order.html?userId=${userId}&username=${username}`;
+function handleUpdateUser(userId) {
+  window.location.href = `/update_user.html?userId=${userId}`;
+}
+
+async function handleDeleteUser(userId) {
+  try {
+    // call api
+    const response = await axios.delete(`auth/admin/users/delete/${userId}`);
+    if (response.status === 200) {
+      window.location.reload();
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      window.location.href = "/login.html";
+    }
+  }
+}
+
+function handleAddUser() {
+  window.location.href = "/create_user.html";
 }
 
 function handleLogoutUser() {

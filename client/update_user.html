@@ -1,91 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UpdateUser</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/adminlte.min.css">
-</head>
+    <link rel="stylesheet" href="css/adminlte.min.css" />
+  </head>
 
-<body class="hold-transition sidebar-mini">
+  <body class="hold-transition sidebar-mini">
     <div class="content-wrapper">
-        <!-- Main content -->
-        <section class="content">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Update</h3>
-                </div>
-                <!-- form start -->
-                <div class="quickForm">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label >New Username</label>
-                            <input type="text" class="form-control" id="username"
-                                placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" id="email" 
-                                placeholder="Email" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label >Password</label>
-                            <input type="password" name="password" class="form-control" id="password"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="showPassword">Show Password</label>
-                            <input type="checkbox" id="showPassword" >
-                        </div>
-                        <div class="form-group">
-                            <label >New Password</label>
-                            <input type="text" name="new_password" class="form-control" id="new_password"
-                                placeholder="New Password">
-                        </div>
-                        <div class="form-group">
-                            <label >Position</label>
-                            <select class="custom-select rounded-0" id="role">
-                                <option value="customer">Customer</option>
-                                <option value="supporter">Supporter</option>
-                                <option value="manager">Manager</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        
-                    </div>
-                </div>
+      <!-- Main content -->
+      <section class="content">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Update</h3>
+          </div>
+          <!-- form start -->
+          <div class="quickForm">
+            <div class="card-body">
+              <div class="form-group">
+                <label>New Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="form-group">
+                <label>Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-group">
+                <label for="showPassword">Show Password</label>
+                <input type="checkbox" id="showPassword" />
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input
+                  type="text"
+                  name="new_password"
+                  class="form-control"
+                  id="new_password"
+                  placeholder="New Password"
+                />
+              </div>
+              <div class="form-group">
+                <label>Position</label>
+                <select class="custom-select rounded-0" id="role">
+                  <option value="customer">Customer</option>
+                  <option value="supporter">Supporter</option>
+                  <option value="manager">Manager</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
             </div>
-        </section>
+
+            <div class="card-footer"></div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <script>
-        // Lấy tham chiếu đến trường input và checkbox
-        const passwordField = document.getElementById('password');
-        const showPasswordCheckbox = document.getElementById('showPassword');
-        
-        // Thêm sự kiện 'change' cho checkbox để bắt sự kiện khi người dùng nhấn vào nó
-        showPasswordCheckbox.addEventListener('change', function() {
-            // Nếu checkbox được chọn, thay đổi thuộc tính type của trường input thành "text"
-            if (this.checked) {
-                passwordField.type = 'text';
-            } else {
-                // Nếu checkbox không được chọn, thay đổi thuộc tính type của trường input thành "password"
-                passwordField.type = 'password';
-            }
-        });
+      // Lấy tham chiếu đến trường input và checkbox
+      const passwordField = document.getElementById("password");
+      const showPasswordCheckbox = document.getElementById("showPassword");
+
+      // Thêm sự kiện 'change' cho checkbox để bắt sự kiện khi người dùng nhấn vào nó
+      showPasswordCheckbox.addEventListener("change", function () {
+        // Nếu checkbox được chọn, thay đổi thuộc tính type của trường input thành "text"
+        if (this.checked) {
+          passwordField.type = "text";
+        } else {
+          // Nếu checkbox không được chọn, thay đổi thuộc tính type của trường input thành "password"
+          passwordField.type = "password";
+        }
+      });
     </script>
 
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="js/common.js" ></script>
-    <script src="js/update_user.js" ></script>
-</body>
+    <script src="js/common.js"></script>
+    <script src="js/update_user.js"></script>
+  </body>
 </html>

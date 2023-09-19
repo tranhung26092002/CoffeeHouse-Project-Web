@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bill</title>
+    <title>Home</title>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
   </head>
 
   <body>
@@ -48,56 +44,21 @@
         </button>
       </div>
     </header>
-
-    <section class="local">
-      <div class="container">
-        <div class="local-top-wrap">
-          <div class="local-top">
-            <div class="local-top-delivery local-top-item">
-              <i class="fas fa-newspaper" onclick="handleNews()"></i>
-            </div>
-            <div class="local-top-adress local-top-item">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="local-top-local local-top-item">
-              <i class="fas fa-money-check-alt" onclick="handlePay()"></i>
-            </div>
-          </div>
-        </div>
+    <!--slide-->
+    <section id="Slider">
+      <div class="aspect-ratio-169">
+        <img src="img/view.jpg" alt="" />
+        <img src="img/view1.jpg" alt="" />
+        <img src="img/view3.jpg" alt="" />
+        <img src="img/view2.jpg" alt="" />
+        <img src="img/view4.webp" alt="" />
       </div>
-
-      <div class="bill-container">
-        <h1>Hóa đơn</h1>
-        <div class="bill-details">
-          <div class="customer-details">
-            <h2>Thông tin khách hàng</h2>
-            <p>Tên: John Doe</p>
-            <p>Email: john@example.com</p>
-            <p>Số điện thoại: 123-456-7890</p>
-            <p>Địa chỉ: 123 ABC Street, XYZ City</p>
-          </div>
-          <div class="payment-details">
-            <h2>Thông tin thanh toán</h2>
-            <p>Tổng số tiền: $100.00</p>
-            <p>Mã giảm giá: ABC123</p>
-            <p>Phương thức thanh toán: Thẻ tín dụng</p>
-            <p>Phương thức giao hàng: Giao hàng tận nơi</p>
-          </div>
-        </div>
-
-        <div class="created-at">
-          <h2>Thời gian tạo hóa đơn</h2>
-          <p>Ngày: <span id="created-date">1/1/2023</span></p>
-        </div>
-
-        <div class="product-list">
-          <h2>Danh sách sản phẩm</h2>
-          <ul>
-            <li>Sản phẩm 1 - $20.00</li>
-            <li>Sản phẩm 2 - $30.00</li>
-            <li>Sản phẩm 3 - $50.00</li>
-          </ul>
-        </div>
+      <div class="dot-container">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
       </div>
     </section>
 
@@ -144,10 +105,42 @@
       }
     });
   </script>
-  
+  <script>
+    const imgPositions = document.querySelectorAll(".aspect-ratio-169 img");
+    const imgContainer = document.querySelector(".aspect-ratio-169");
+    const dotItems = document.querySelectorAll(".dot");
+    let currentIndex = 0;
+    const imgCount = imgPositions.length;
+
+    imgPositions.forEach(function (image, index) {
+      image.style.left = index * 100 + "%";
+      dotItems[index].addEventListener("click", function () {
+        clearInterval(slideInterval); // Dừng interval hiện tại
+        slider(index);
+        slideInterval = setInterval(imgSlide, 7000); // Khởi động lại interval
+      });
+    });
+
+    function imgSlide() {
+      currentIndex++;
+      if (currentIndex >= imgCount) {
+        currentIndex = 0;
+      }
+      slider(currentIndex);
+    }
+
+    function slider(index) {
+      imgContainer.style.left = "-" + index * 100 + "%";
+      const dotActive = document.querySelector(".dot.active");
+      dotActive.classList.remove("active");
+      dotItems[index].classList.add("active");
+    }
+
+    let slideInterval = setInterval(imgSlide, 7000);
+  </script>
+
   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   <script src="js/jwt-decode.js"></script>
   <script src="js/common.js"></script>
   <script src="js/home.js"></script>
-  <script src="js/bill.js"></script>
 </html>

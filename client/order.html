@@ -1,120 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OderPage</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oder</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/adminlte.min.css">
-</head>
+    <link rel="stylesheet" href="css/adminlte.min.css" />
+  </head>
 
-<body class="hold-transition sidebar-mini">
+  <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a  class="nav-link">Bill</a>
-                </li>
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link">Bill</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="" class="brand-link">
+          Manager :
+          <span class="brand-text font-weight-light username">
+            <!-- display username -->
+          </span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="info">
+              <button
+                type="button"
+                class="btn-primary"
+                onclick="handleLogoutUser()"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Updata
+                    <span class="right badge badge-danger">New</span>
+                  </p>
+                </a>
+              </li>
             </ul>
-        </nav>
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="" class="brand-link">
-                Manager : 
-                <span class="brand-text font-weight-light username">
-                    <!-- display username -->
-                </span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info">
-                        <button type="button" class="btn-primary " onclick="handleLogoutUser()">Logout</button>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Updata
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-
-        <!-- Bill -->
-        <div class="content-wrapper">
-            <!-- name customer -->
-            <div class="content-header">
-                <div class="col-sm-6">
-                    <span style="display: flex; align-items: center;">
-                        Customername: <h1 class="customername" style="margin-left: 10px;"></h1>
-                    </span>                    
-                </div>
-            </div>
-            <!-- Main content -->
-            <div class="content">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">List Product</h3>
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <!-- Create new user -->
-                                <button type="button" class="btn btn-primary "
-                                    onclick="handlePrint()">Print</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body table-responsive p-0 list_user">
-
-                        <!-- order.js -->
-
-                    </div>
-                    <div class="card-footer">
-                        <h4 class="card-title" id="total-amount"></h4>
-                    </div>
-                </div>
-            </div>
+          </nav>
         </div>
+      </aside>
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Email: hungtran01686527618@gmail.com
+      <!-- Bill -->
+      <div class="content-wrapper">
+        <!-- name customer -->
+        <div class="content-header">
+          <div class="col-sm-6">
+            <span style="display: flex; align-items: center">
+              Customername:
+              <h1 class="customername" style="margin-left: 10px"></h1>
+            </span>
+          </div>
+        </div>
+        <!-- Main content -->
+        <div class="content">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">List Product</h3>
+              <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px">
+                  <!-- Create new user -->
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="handlePrint()"
+                  >
+                    Print
+                  </button>
+                </div>
+              </div>
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2002-2023. <a href="https://www.facebook.com/tranhung2609" >My Facebook</a>.</strong>
-        </footer>
+
+            <div class="card-body table-responsive p-0 list_user">
+              <!-- order.js -->
+            </div>
+            <div class="card-footer">
+              <h4 class="card-title" id="total-amount"></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+          Email: hungtran01686527618@gmail.com
+        </div>
+        <!-- Default to the left -->
+        <strong
+          >Copyright &copy; 2002-2023.
+          <a href="https://www.facebook.com/tranhung2609">My Facebook</a
+          >.</strong
+        >
+      </footer>
     </div>
 
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="js/jwt-decode.js"></script>
     <script src="js/common.js"></script>
     <script src="js/order.js"></script>
-
-
-</body>
+  </body>
 </html>
