@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const productModel = require('../Models/ProductModel');
-const userModel = require('../Models/UserModel');
 
 const getList = async (req, res) => {
   try {
@@ -8,9 +7,8 @@ const getList = async (req, res) => {
     const accessToken = bearerHeader.split(' ')[1];
     const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
     const userId = decodeJwt._id;
-    const user = await userModel.findById(userId);
     
-    const products = await productModel.find({ userId: user._id });
+    const products = await productModel.find({ userId: userId });
     return res.status(200).send(products);
   } catch (error) {
       // log error
@@ -24,13 +22,12 @@ const createProduct = async (req, res) => {
     const accessToken = bearerHeader.split(' ')[1];
     const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
     const userId = decodeJwt._id;
-    const user = await userModel.findById(userId);
 
     const nameproduct = req.body.name_product;
     const priceproduct = req.body.price_product;
 
     // Check if the product already exists in the database
-    const existingProduct = await productModel.findOne({ userId: user._id, name: nameproduct });
+    const existingProduct = await productModel.findOne({ userId: userId, name: nameproduct });
 
     if (existingProduct) {
       // If the product exists, increase the quantity
@@ -39,7 +36,7 @@ const createProduct = async (req, res) => {
     } else {
       // If the product doesn't exist, create a new one
       await productModel.create({
-        userId: user._id,
+        userId: userId,
         name: nameproduct,
         price: priceproduct,
         quantity: 1,
@@ -63,6 +60,23 @@ const deleteProduct = async (req, res) => {
       return res.status(200).send('delete product success');
   } catch (error) {
       // log error
+  } 
+}
+
+
+const deleteAll = async (req, res) => {
+  try {
+    const bearerHeader = req.headers['authorization'];
+    const accessToken = bearerHeader.split(' ')[1];
+    const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
+    const userId = decodeJwt._id;
+
+    // Tìm tất cả sản phẩm của người dùng dựa trên userId
+    await productModel.deleteMany({ userId: userId });
+    return res.status(200).send('delete product success');
+  } catch (error) {
+      // log error
+    return res.status(500).send({ error: 'Lỗi khi xóa sản phẩm.' });
   } 
 }
 
@@ -90,4 +104,5 @@ module.exports = {
     createProduct: createProduct,
     deleteProduct: deleteProduct,
     updateProduct: updateProduct,
+    deleteAll: deleteAll,
 };

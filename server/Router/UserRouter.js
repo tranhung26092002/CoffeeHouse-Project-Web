@@ -14,8 +14,4 @@ router.put('/update/:userId', [
     authMiddleware.isAuthentication,
 ],userController.updateInfor);
 
-router.post('/bill/create', [
-    // authMiddleware.isAuthentication,
-],userController.createBill);
-
 module.exports = router;

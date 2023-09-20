@@ -113,6 +113,20 @@ async function incrementQuantity(productId) {
   }
 }
 
+async function submitBill() {
+  try {
+    // call api
+    const response = await axios.delete(`auth/user/products/deleteAll`);
+    if (response.status === 200) {
+      window.location.href = "bill.html";
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      window.location.href = "/login.html";
+    }
+  }
+}
+
 async function checkout() {
   try {
     // lay infor
@@ -122,20 +136,20 @@ async function checkout() {
     const selectedPaymentMethod = document.querySelector(
       'input[name="method-payment"]:checked'
     ).value;
-    const selectedDeliverytMethod = document.querySelector(
+    const selectedDeliveryMethod = document.querySelector(
       'input[name="method-delivery"]:checked'
     ).value;
 
     // gui value
-    const response = await axios.post("auth/user/infor/bill/create", {
+    const response = await axios.post("auth/user/bills/create", {
       phoneNumber: phoneNumber,
       address: address,
       discountCode: discountCode,
-      deliverytMethod: selectedDeliverytMethod,
+      deliveryMethod: selectedDeliveryMethod,
       paymentMethod: selectedPaymentMethod,
     });
     if (response.status == 200) {
-      console.log(response);
+      showBill(response);
     }
   } catch (error) {
     if (error.response && error.response.status === 400) {
@@ -143,4 +157,40 @@ async function checkout() {
       alert("Lỗi xác thực tài khoản. Thử lại!");
     }
   }
+}
+
+function showBill(response) {
+  const billData = response.data; // Giả sử 'response' chứa thông tin hóa đơn
+
+  // Cập nhật thông tin khách hàng
+  document.getElementById("customer-name").textContent = billData.name;
+  document.getElementById("email").textContent = billData.email;
+  document.getElementById("phone-number").textContent = billData.phoneNumber;
+  document.getElementById("address-user").textContent = billData.address;
+
+  // Cập nhật thông tin thanh toán
+  document.getElementById("total").textContent = `${billData.totalAmount} VND`;
+  document.getElementById("discount-code").textContent = billData.discountCode;
+  document.getElementById("payment-method").textContent =
+    billData.paymentMethod;
+  document.getElementById("delivery-method").textContent =
+    billData.deliveryMethod;
+
+  // Cập nhật thời gian tạo hóa đơn
+  const createdAtDate = new Date(billData.createdAt);
+  const createdAtDateString = `${createdAtDate.getDate()}/${
+    createdAtDate.getMonth() + 1
+  }/${createdAtDate.getFullYear()}`;
+  document.getElementById("created-date").textContent = createdAtDateString;
+
+  // Cập nhật danh sách sản phẩm
+  const productListUl = document.getElementById("product-list-ul");
+  productListUl.innerHTML = ""; // Xóa nội dung hiện tại của danh sách sản phẩm
+  billData.products.forEach((product) => {
+    const li = document.createElement("li");
+    li.textContent = `${product.name} - ${
+      product.price * product.quantity
+    } VND`;
+    productListUl.appendChild(li);
+  });
 }

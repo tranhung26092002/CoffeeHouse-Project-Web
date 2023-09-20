@@ -18,6 +18,10 @@ router.delete('/products/delete/:productId',[
     authMiddleware.isAuthentication
 ], ProductController.deleteProduct);
 
+router.delete('/products/deleteAll',[
+    authMiddleware.isAuthentication
+], ProductController.deleteAll);
+
 // Đăng ký route để cập nhật số lượng 
 router.put('/products/update/:productId',[
     authMiddleware.isAuthentication

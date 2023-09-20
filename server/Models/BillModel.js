@@ -18,7 +18,7 @@ const billSchema = new mongoose.Schema({
   phoneNumber: String,
   discountCode: String,
   paymentMethod: String,
-  deliverytMethod: String,
+  deliveryMethod: String,
   createdAt: {
     type: Date,
     default: Date.now,
