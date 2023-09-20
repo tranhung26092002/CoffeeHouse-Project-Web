@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+// Định nghĩa schema cho sản phẩm trong hóa đơn
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  quantity: Number,
+});
+
+// Định nghĩa schema cho hóa đơn
 const billSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -7,12 +15,7 @@ const billSchema = new mongoose.Schema({
   },
   name: String,
   email: String,
-  products: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product', // Tham chiếu đến module sản phẩm
-    },
-  ],
+  products: [productSchema], // Sử dụng schema sản phẩm ở trên
   totalAmount: Number,
   address: String,
   phoneNumber: String,

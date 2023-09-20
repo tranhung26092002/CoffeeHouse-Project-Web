@@ -14,8 +14,8 @@ router.post('/create', [
 ],billController.createBill);
 
 
-// router.delete('/delete', [
-//     // authMiddleware.isAuthentication,
-// ],billController.deleteBill);
+router.delete('/deleteAll', [
+    // authMiddleware.isAuthentication,
+],billController.deleteAll);
 
 module.exports = router;

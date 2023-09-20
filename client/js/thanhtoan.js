@@ -188,9 +188,7 @@ function showBill(response) {
   productListUl.innerHTML = ""; // Xóa nội dung hiện tại của danh sách sản phẩm
   billData.products.forEach((product) => {
     const li = document.createElement("li");
-    li.textContent = `${product.name} - ${
-      product.price * product.quantity
-    } VND`;
+    li.textContent = `${product.name} - ${product.price} x ${product.quantity} = ${product.price * product.quantity} VND`;
     productListUl.appendChild(li);
   });
 }

@@ -23,7 +23,7 @@
               <li><a onclick="handleDrink()" href="#">Đồ uống</a></li>
               <li><a onclick="handleNews()" href="#">Tin Tức</a></li>
               <li><a onclick="handleAddress()" href="#">Địa chỉ</a></li>
-              <li><a onclick="handlePay()" href="#">Thanh toán</a></li>
+              <li><a onclick="handlePay()" href="#">Giỏ hàng</a></li>
               <li><a onclick="handleBill()" href="#">Hóa đơn</a></li>
             </div>
             <div class="other">
@@ -52,10 +52,13 @@
                             <i class="fas fa-newspaper" style='color: blue'></i>
                         </div>
                         <div class="payment-top-adress payment-top-item">
-                                <i class="fas fa-map-marker-alt " onclick="handleAddress()"></i>
+                            <i class="fas fa-map-marker-alt " onclick="handleAddress()"></i>
                         </div>
+                        <div class="payment-top-delivery payment-top-item">
+                            <i class='fas fa-cart-plus' onclick="handlePay()"></i>
+                          </div>
                         <div class="local-top-local local-top-item"> 
-                            <i class="fas fa-money-check-alt" onclick="handlePay()"></i>
+                            <i class="fas fa-money-check-alt" onclick="handleBill()"></i>
                         </div>
                         </div>
                     </div>

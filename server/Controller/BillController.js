@@ -25,7 +25,12 @@ const createBill = async (req, res) => {
     const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
     const userId = decodeJwt._id; // Lấy userId từ token
 
+    // Kiểm tra xem danh sách sản phẩm của người dùng có rỗng không
     const userProducts = await productModel.find({ userId: userId });
+    if (userProducts.length === 0) {
+      return res.status(400).send({ error: "Không có sản phẩm để tạo hóa đơn." });
+    }
+
     const user = await userModel.findById(userId);
 
     // Lấy thông tin từ client (số điện thoại, địa chỉ, mã giảm giá)
@@ -37,8 +42,15 @@ const createBill = async (req, res) => {
       deliveryMethod,
     } = req.body;
 
+    // Tạo danh sách chi tiết sản phẩm
+    const productsDetails = userProducts.map((product) => ({
+      name: product.name,
+      price: product.price,
+      quantity: product.quantity,
+    }));
+
     // Tính tổng giá trị hóa đơn từ danh sách sản phẩm
-    const totalAmount = userProducts.reduce(
+    const totalAmount = productsDetails.reduce(
       (total, product) => total + product.price * product.quantity,
       0
     );
@@ -48,7 +60,7 @@ const createBill = async (req, res) => {
       userId: userId, // Sử dụng userId của người dùng
       name: user.username,
       email: user.email,
-      products: userProducts, // Sử dụng danh sách sản phẩm của người dùng
+      products: productsDetails, // Sử dụng danh sách chi tiết sản phẩm
       totalAmount: totalAmount, // Tổng giá trị hóa đơn
       phoneNumber: phoneNumber, // Số điện thoại từ client
       address: address, // Địa chỉ từ client
@@ -56,6 +68,7 @@ const createBill = async (req, res) => {
       paymentMethod: paymentMethod,
       deliveryMethod: deliveryMethod,
     });
+    console.log(newBill);
     // Trả về kết quả cho client
     res.status(200).send(newBill);
   } catch (error) {
@@ -64,7 +77,27 @@ const createBill = async (req, res) => {
   }
 };
 
+
+const deleteAll = async (req, res) => {
+  try {
+    const bearerHeader = req.headers['authorization'];
+    const accessToken = bearerHeader.split(' ')[1];
+    const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
+    const userId = decodeJwt._id;
+
+    // Tìm tất cả sản phẩm của người dùng dựa trên userId
+    await billModel.deleteMany({ userId: userId });
+    return res.status(200).send('delete bills success');
+  } catch (error) {
+      // log error
+    return res.status(500).send({ error: 'Lỗi khi xóa sản phẩm.' });
+  } 
+}
+
+
+
 module.exports = {
   getListBill: getListBill,
   createBill: createBill,
+  deleteAll: deleteAll,
 };

@@ -41,15 +41,30 @@ function showList(response) {
 
                   <div class="created-at">
                     <h2>Thời gian tạo hóa đơn</h2>
-                    <p>Ngày: ${createdAtDate.getDate()}/${createdAtDate.getMonth() + 1}/${createdAtDate.getFullYear()} - ${createdAtDate.getHours()}: ${createdAtDate.getMinutes()}</p>
+                    <p>Ngày: ${createdAtDate.getDate()}/${createdAtDate.getMonth() + 1}/${createdAtDate.getFullYear()} - ${createdAtDate.getHours()}:${createdAtDate.getMinutes()}</p>
                   </div>
 
                   <div class="product-list">
                     <h2>Danh sách sản phẩm</h2>
                     <ul id="product-list-ul">
-                      ${bill.products.map((product) => `<li>${product.name} - ${product.price * product.quantity} VND</li>`).join('')}                    </ul>
+                      ${bill.products.map((product) => `<li>${product.name} - ${product.price} x ${product.quantity} = ${product.price * product.quantity} VND</li>`).join('')}</ul>
                   </div>
                 </div>`;
   });
   document.querySelector(".bill").innerHTML = htmlBill;
+}
+
+
+async function deleteBill() {
+  try {
+    // call api
+    const response = await axios.delete(`auth/user/bills/deleteAll`);
+    if (response.status === 200) {
+      window.location.reload();
+    }
+  } catch (error) {
+    if (error.response.status === 401) {
+      window.location.href = "/login.html";
+    }
+  }
 }
