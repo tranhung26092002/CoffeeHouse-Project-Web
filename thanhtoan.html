@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--header-->
+    <header>
+      <div class="logo">
+        <img src="img/logo.webp" />
+      </div>
+      <div class="menu">
+        <li><a onclick="handleTrangchu()" href="#">Trang chủ</a></li>
+        <li><a onclick="handleFood()" href="#">Đồ ăn</a></li>
+        <li><a onclick="handleDrink()" href="#">Đồ uống</a></li>
+        <li><a onclick="handleNews()" href="#">Tin Tức</a></li>
+        <li><a onclick="handleAddress()" href="#">Địa chỉ</a></li>
+        <li><a onclick="handlePay()" href="#">Giỏ hàng</a></li>
+        <li><a onclick="handleBill()" href="#">Hóa đơn</a></li>
+      </div>
+      <div class="other">
+        <li>
+          <input placeholder="Tìm Kiếm " type="text" />
+          <i class="bx bx-search"></i>
+        </li>
+        <li>
+          <a href="#"> <i class="bx bx-user" onclick="inforUser()"></i> </a>
+        </li>
+        <li>
+          <a href="#"> <i class="name_user"></i> </a>
+        </li>
+        <!-- display name -->
+        <button type="button" class="btn-primary" onclick="handleLogoutUser()">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!--payment-->
+    <section class="payment">
+      <div class="container">
+        <div class="payment-top-wrap">
+          <div class="payment-top">
+            <div class="payment-top-delivery payment-top-item">
+              <i class="fas fa-newspaper" onclick="handleNews()"></i>
+            </div>
+            <div class="payment-top-adress payment-top-item">
+              <i class="fas fa-map-marker-alt" onclick="handleAddress()"></i>
+            </div>
+            <div class="payment-top-delivery payment-top-item">
+              <i class="fas fa-cart-plus" style="color: blue"></i>
+            </div>
+            <div class="payment-top-payment payment-top-item">
+              <i class="fas fa-list-alt" onclick="handleBill()"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-container">
+        <h1>Thanh toán sản phẩm</h1>
+
+        <div class="list_container">
+          <!-- Danh sách sản phẩm đã chọn -->
+        </div>
+
+        <!-- Tổng số tiền sản phẩm -->
+        <div class="total">
+          <span class="total-label">Tổng cộng:</span>
+          <span id="total-amount"> </span>
+        </div>
+      </div>
+
+      <div class="container_methor">
+        <div class="payment-content row">
+          <div class="payment-content-left">
+            <div class="payment-content-left-method-delivery">
+              <p style="font-weight: bold">Phương thức giao hàng</p>
+              <div class="payment-content-left-method-delivery-item">
+                <input
+                  id="Fast Delivery"
+                  name="method-delivery"
+                  checked
+                  type="radio"
+                  value="Fast Delivery"
+                />
+                <label for="Fast Delivery">Giao hàng chuyển phát nhanh </label>
+              </div>
+              <div class="payment-content-left-method-delivery-item">
+                <input
+                  id="Regular Delivery"
+                  name="method-delivery"
+                  type="radio"
+                  value="Regular Delivery"
+                />
+                <label for="Regular Delivery"
+                  >Giao hàng chuyển phát thường
+                </label>
+              </div>
+            </div>
+            <div class="payment-content-left-method-payment">
+              <p style="font-weight: bold">Phương thức thanh toán</p>
+              <p>
+                Mọi giao dịch đều được bảo mật và mã hóa. Thông tin thẻ tín dụng
+                sẽ không bao giờ được lưu lại.
+              </p>
+
+              <div class="payment-content-left-method-payment-item">
+                <input
+                  id="credit-card"
+                  name="method-payment"
+                  type="radio"
+                  value="Credit-Card"
+                />
+                <label for="credit-card"
+                  >Thanh toán bằng thẻ tín dụng(OnePay)</label
+                >
+              </div>
+              <div class="payment-content-left-method-payment-item-img">
+                <img
+                  src="img/Pay/Visa Masteraed.png"
+                  alt="Logo Visa và MasterCard"
+                />
+              </div>
+
+              <div class="payment-content-left-method-payment-item">
+                <input
+                  id="atm"
+                  checked
+                  name="method-payment"
+                  type="radio"
+                  value="ATM"
+                />
+                <label for="atm">Thanh toán bằng thẻ ATM(OnePay)</label>
+              </div>
+              <div class="payment-content-left-method-payment-item-img">
+                <img src="img/Pay/Bank.jpg" alt="Logo ngân hàng" />
+              </div>
+
+              <div class="payment-content-left-method-payment-item">
+                <input
+                  id="momo"
+                  name="method-payment"
+                  type="radio"
+                  value="Momo"
+                />
+                <label for="momo">Thanh toán bằng Momo(OnePay)</label>
+              </div>
+              <div class="payment-content-left-method-payment-item-img">
+                <img src="img/Pay/Momo.png" alt="Logo Momo" />
+              </div>
+
+              <div class="payment-content-left-method-payment-item">
+                <input
+                  id="cash"
+                  name="method-payment"
+                  type="radio"
+                  value="Cash"
+                />
+                <label for="cash">Thu tiền tận nơi</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container_pay">
+        <div class="payment-content-right">
+          <div class="payment-content-right-button">
+            <input id="phoneNumber" type="text" placeholder="Số điện thoại" />
+          </div>
+          <div class="payment-content-right-button">
+            <input id="address" type="text" placeholder="Địa chỉ nhận hàng" />
+          </div>
+          <div class="payment-content-right-button">
+            <input id="discountCode" type="text" placeholder="Mã giảm giá" />
+          </div>
+          <div class="payment-content-right-payment">
+            <button id="checkout-button" onclick="checkout()">
+              TIẾP TỤC THANH TOÁN
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="invoice-modal" class="invoice-modal">
+      <div class="bill-container">
+        <h1>Hóa đơn</h1>
+        <div class="bill-details">
+          <div class="customer-details">
+            <h2>Thông tin khách hàng</h2>
+            <p>Tên: <span id="customer-name"></span></p>
+            <p>Email: <span id="email"></span></p>
+            <p>Số điện thoại: <span id="phone-number"></span></p>
+            <p>Địa chỉ: <span id="address-user"></span></p>
+          </div>
+          <div class="payment-details">
+            <h2>Thông tin thanh toán</h2>
+            <p>Tổng số tiền: <span id="total"></span></p>
+            <p>Mã giảm giá: <span id="discount-code"></span></p>
+            <p>Phương thức thanh toán: <span id="payment-method"></span></p>
+            <p>Phương thức giao hàng: <span id="delivery-method"></span></p>
+          </div>
+        </div>
+
+        <div class="created-at">
+          <h2>Thời gian tạo hóa đơn</h2>
+          <p>Ngày: <span id="created-date"></span></p>
+        </div>
+
+        <div class="product-list">
+          <h2>Danh sách sản phẩm</h2>
+          <ul id="product-list-ul">
+            <!-- Danh sách sản phẩm sẽ được thêm bằng JavaScript -->
+          </ul>
+        </div>
+      </div>
+
+      <div class="payment-content-right-payment">
+        <button id="close-button" onclick="submitBill()">Xác nhận</button>
+      </div>
+    </div>
+
+    <!--app-->
+    <section class="app-container">
+      <p>Tải ứng dụng</p>
+      <div class="app">
+        <a href="#"> <img src="img/app Store.png" alt="logo app store" /> </a>
+        <a href="#"> <img src="img/CH play.png" alt="logo ch play" /> </a>
+      </div>
+      <input type="text" placeholder="Nhập email của bạn ..." />
+    </section>
+    <!--footer-->
+    <div class="footer-top">
+      <li>
+        <a href=""> <img src="" alt="" /> </a>
+      </li>
+      <li>Liên hệ</li>
+      <li>Tuyển dụng</li>
+      <li>Giới thiệu</li>
+      <li>
+        <i class="bx bxl-facebook"></i>
+        <i class="bx bxl-youtube"></i>
+        <i class="bx bxl-twitter"></i>
+      </li>
+    </div>
+    <div class="footer-center">
+      <p>
+        Địa chỉ: Học viện Công nghệ Bưu chính-Viễn thông <br /><!--xuong dong-->
+        Đặt hàng online: <b>0386527618</b>
+      </p>
+    </div>
+    <div class="footer-bottom">@tranvanhung</div>
+  </body>
+  <script>
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", function () {
+      x = window.pageYOffset;
+      if (x > 0) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    });
+  </script>
+
+  <script>
+    // Lắng nghe sự kiện khi nút thanh toán được bấm
+    const checkoutButton = document.getElementById("checkout-button");
+    const invoiceModal = document.getElementById("invoice-modal");
+    const closeButton = document.getElementById("close-button");
+
+    checkoutButton.addEventListener("click", () => {
+      // Hiển thị bảng hóa đơn (modal)
+      invoiceModal.style.display = "block";
+    });
+
+    // Lắng nghe sự kiện khi người dùng bấm vào nút đóng
+    closeButton.addEventListener("click", () => {
+      // Đóng bảng hóa đơn (modal)
+      invoiceModal.style.display = "none";
+    });
+  </script>
+
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="js/jwt-decode.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/thanhtoan.js"></script>
+</html>

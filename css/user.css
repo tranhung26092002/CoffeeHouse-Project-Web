@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Chỉnh sửa tên font chính xác */
+}
+
+/* Thiết lập cho khung nền trắng */
+.content-wrapper {
+    background-color: white;
+    padding: 20px; /* Khoảng cách padding xung quanh phần tử */
+    border: 1px solid #ddd; /* Đường viền xung quanh khung nền */
+    border-radius: 5px; /* Bo góc khung nền */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho khung nền */
+    width: 80%;
+    height: 100%;
+    /* Canh giữa khung nền */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Thiết lập cho các phần tử trong card */
+.card {
+    border: none; /* Loại bỏ đường viền card mặc định */
+    margin-bottom: 50px; /* Khoảng cách giữa các card */
+    border-radius: 5px; /* Bo góc của card */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho card */
+    background-color: white;
+    padding: 20px; /* Khoảng cách padding xung quanh phần tử */
+    border: 1px solid #ddd; /* Đường viền xung quanh khung nền */
+    border-radius: 5px; /* Bo góc khung nền */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho khung nền */
+    width: 80%;
+    height: 100%;
+    /* Canh giữa khung nền */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Thiết lập cho tiêu đề card */
+.card-header {
+    height: 50px;
+    background-color: #007BFF; /* Màu nền cho tiêu đề card */
+    color: rgb(0, 0, 0); /* Màu chữ cho tiêu đề card */
+    border-radius: 5px 5px 0 0; /* Bo góc cho tiêu đề card */
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 50px;
+    font-size: 30px;
+}
+
+/* Thiết lập cho các form group */
+.form-group {
+    margin-bottom: 15px; /* Khoảng cách giữa các form group */
+    border: 1px solid #ddd; /* Đường viền xung quanh form group */
+    border-radius: 5px; /* Bo góc của form group */
+    padding: 10px; /* Khoảng cách padding bên trong form group */
+    display: flex; /* Hiển thị input và label trên cùng một dòng */
+    flex-direction: column; /* Sắp xếp input và label dưới dạng cột */
+}
+
+label {
+    font-size: 16px; /* Kích thước chữ cho label */
+}
+
+.form-control {
+    border: 1px solid #ddd; /* Đường viền xung quanh input */
+    border-radius: 5px; /* Bo góc cho input */
+    padding: 8px; /* Khoảng cách padding bên trong input */
+    font-size: 16px; /* Kích thước chữ cho input */
+}
+
+/* Thiết lập cho nút Update User */
+.btn-primary {
+    background-color: #007BFF; /* Màu nền cho nút */
+    color: rgb(0, 0, 0); /* Màu chữ cho nút */
+}
+
+/* Thiết lập cho checkbox "Show Password" */
+#showPassword + label::before {
+    background-color: #007BFF; /* Màu nền cho checkbox */
+}

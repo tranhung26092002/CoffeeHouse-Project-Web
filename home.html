@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!--header-->
+    <header>
+      <div class="logo">
+        <img src="img/logo.webp" />
+      </div>
+      <div class="menu">
+        <li><a onclick="handleTrangchu()" href="#">Trang chủ</a></li>
+        <li><a onclick="handleFood()" href="#">Đồ ăn</a></li>
+        <li><a onclick="handleDrink()" href="#">Đồ uống</a></li>
+        <li><a onclick="handleNews()" href="#">Tin Tức</a></li>
+        <li><a onclick="handleAddress()" href="#">Địa chỉ</a></li>
+        <li><a onclick="handlePay()" href="#">Giỏ hàng</a></li>
+        <li><a onclick="handleBill()" href="#">Hóa đơn</a></li>
+      </div>
+      <div class="other">
+        <li>
+          <input placeholder="Tìm Kiếm " type="text" />
+          <i class="bx bx-search"></i>
+        </li>
+        <li>
+          <a href="#"> <i class="bx bx-user" onclick="inforUser()"></i> </a>
+        </li>
+        <li>
+          <a href="#"> <i class="name_user"></i> </a>
+        </li>
+        <!-- display name -->
+        <button type="button" class="btn-primary" onclick="handleLogoutUser()">
+          Logout
+        </button>
+      </div>
+    </header>
+    <!--slide-->
+    <section id="Slider">
+      <div class="aspect-ratio-169">
+        <img src="img/view.jpg" alt="" />
+        <img src="img/view1.jpg" alt="" />
+        <img src="img/view3.jpg" alt="" />
+        <img src="img/view2.jpg" alt="" />
+        <img src="img/view4.webp" alt="" />
+      </div>
+      <div class="dot-container">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </section>
+
+    <!--app-->
+    <section class="app-container">
+      <p>Tải ứng dụng</p>
+      <div class="app">
+        <a href="#"> <img src="img/app Store.png" alt="logo app store" /> </a>
+        <a href="#"> <img src="img/CH play.png" alt="logo ch play" /> </a>
+      </div>
+      <input type="text" placeholder="Nhập email của bạn ..." />
+    </section>
+    <!--footer-->
+    <div class="footer-top">
+      <li>
+        <a href=""> <img src="" alt="" /> </a>
+      </li>
+      <li>Liên hệ</li>
+      <li>Tuyển dụng</li>
+      <li>Giới thiệu</li>
+      <li>
+        <i class="bx bxl-facebook"></i>
+        <i class="bx bxl-youtube"></i>
+        <i class="bx bxl-twitter"></i>
+      </li>
+    </div>
+    <div class="footer-center">
+      <p>
+        Địa chỉ: Học viện Công nghệ Bưu chính-Viễn thông <br /><!--xuong dong-->
+        Đặt hàng online: <b>0386527618</b>
+      </p>
+    </div>
+    <div class="footer-bottom">@tranvanhung</div>
+  </body>
+
+  <script>
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", function () {
+      x = window.pageYOffset;
+      if (x > 0) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    });
+  </script>
+  <script>
+    const imgPositions = document.querySelectorAll(".aspect-ratio-169 img");
+    const imgContainer = document.querySelector(".aspect-ratio-169");
+    const dotItems = document.querySelectorAll(".dot");
+    let currentIndex = 0;
+    const imgCount = imgPositions.length;
+
+    imgPositions.forEach(function (image, index) {
+      image.style.left = index * 100 + "%";
+      dotItems[index].addEventListener("click", function () {
+        clearInterval(slideInterval); // Dừng interval hiện tại
+        slider(index);
+        slideInterval = setInterval(imgSlide, 7000); // Khởi động lại interval
+      });
+    });
+
+    function imgSlide() {
+      currentIndex++;
+      if (currentIndex >= imgCount) {
+        currentIndex = 0;
+      }
+      slider(currentIndex);
+    }
+
+    function slider(index) {
+      imgContainer.style.left = "-" + index * 100 + "%";
+      const dotActive = document.querySelector(".dot.active");
+      dotActive.classList.remove("active");
+      dotItems[index].classList.add("active");
+    }
+
+    let slideInterval = setInterval(imgSlide, 7000);
+  </script>
+
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="js/jwt-decode.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</html>

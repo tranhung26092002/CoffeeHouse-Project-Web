@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>News</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    </head>
+
+    <body>
+        <!--header-->
+        <header>
+            <div class="logo">
+              <img src="img/logo.webp" />
+            </div>
+            <div class="menu">
+              <li><a onclick="handleTrangchu()" href="#">Trang chủ</a></li>
+              <li><a onclick="handleFood()" href="#">Đồ ăn</a></li>
+              <li><a onclick="handleDrink()" href="#">Đồ uống</a></li>
+              <li><a onclick="handleNews()" href="#">Tin Tức</a></li>
+              <li><a onclick="handleAddress()" href="#">Địa chỉ</a></li>
+              <li><a onclick="handlePay()" href="#">Giỏ hàng</a></li>
+              <li><a onclick="handleBill()" href="#">Hóa đơn</a></li>
+            </div>
+            <div class="other">
+              <li>
+                <input placeholder="Tìm Kiếm " type="text" />
+                <i class="bx bx-search"></i>
+              </li>
+              <li>
+                <a href="#"> <i class="bx bx-user" onclick="inforUser()"></i> </a>
+              </li>
+              <li>
+                <a href="#"> <i class="name_user"></i> </a>
+              </li>
+              <!-- display name -->
+              <button type="button" class="btn-primary" onclick="handleLogoutUser()">
+                Logout
+              </button>
+            </div>
+        </header>
+        <!-- /*test*/ -->
+        <section class="payment">
+            <div class="container">
+                <div class="payment-top-wrap"> 
+                    <div class="payment-top">
+                        <div class="payment-top-delivery payment-top-item">
+                            <i class="fas fa-newspaper" style='color: blue'></i>
+                        </div>
+                        <div class="payment-top-adress payment-top-item">
+                            <i class="fas fa-map-marker-alt " onclick="handleAddress()"></i>
+                        </div>
+                        <div class="payment-top-delivery payment-top-item">
+                            <i class='fas fa-cart-plus' onclick="handlePay()"></i>
+                          </div>
+                        <div class="local-top-local local-top-item"> 
+                            <i class="fas fa-money-check-alt" onclick="handleBill()"></i>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+    
+            <div class="news-container">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/tet.png" alt="Ảnh tin tức">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">Thông báo lịch hoạt động tết 2020 Hà Nội</a>
+                        </h4>
+                        <span class="time">Sự kiện - 20/01/2020</span>
+                        <p class="description">Các cửa hàng ở Hà Nội thông báo thời gian Đóng – Mở cửa Tết Canh Tý 2020, các bạn có thể dễ dàng theo dõi theo các khu vực Quận/Huyện thành phố Hà Nội.</p>
+                    </div>
+                </div>
+                
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/banner web_250x188.png" alt="" >
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">UỐNG TRÀ SỮA ĐI HÀN QUỐC</a>
+                        </h4>
+                        <span class="time">Khuyến mại - 26/09/2019</span>
+                        <p class="description">Tham gia tích luỹ điểm thưởng trúng ngay chuyến du lịch Hàn Quốc &amp; hơn 5000 quà tặng bốc thăm may mắn mỗi tuần.</p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/18_6_t3_home.png" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">TRÀ SỮA ƯU ĐÃI THỨ 3 18/06/2019</a>
+                        </h4>
+                        <span class="time">Khuyến mại - 15/06/2019</span>
+                        <p class="description">Tiếp nối chương trình khuyến mãi Thứ 3 hàng tuần, vào ngày Thứ 3 (18/06) tới đây, Cửa Hàng áp dụng chương trình ưu đãi Giảm giá 20% cho toàn bộ đồ uống thuộc dòng Trà Trái Cây  </p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/image_cover.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"> 
+                            <a href="#">ƯU ĐÃI THỨ 3 HÀNG TUẦN</a>
+                        </h4>
+                        <span class="time">Khuyến mại - 04/05/2019</span>
+                        <p class="description">Uống trà sữa thả ga không cần lo về giá với ưu đãi Thứ 3 hàng tuần tại các cửa hàng, áp dụng trên toàn bộ hệ thống cửa hàng tại khu vực Hà Nội.</p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/news-figure-egift.png" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">[GOT IT] QUÀ TẶNG ĐIỆN TỬ HẤP DẪN</a>
+                        </h4>
+                        <span class="time">Tin tức - 8/3/2018</span>
+                        <p class="description">Là thương hiệu trà sữa hàng đầu tại Việt Nam, Cửa hàng chiếm được tình cảm cao trong lòng người tiêu dùng bởi chất lượng đồ uống... </p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/mua_valentine_nay.jpg" alt="" >
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">Mùa Valentine này</a>
+                        </h4>
+                        <span class="time">Tin tức - 7/3/2018</span>
+                        <p class="description">Mùa Valentine này ….<br>
+                            Hãy để Cửa hàng sẽ tìm cho bạn nửa yêu thương ấy, một nửa đang tìm kiếm bấy lâu.</p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/ltet_mau_tuat_2018.jpg" alt="" >
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">Thông báo giờ mở cửa tết 2018 Cửa Hàng Hà Nội</a>
+                        </h4>
+                        <span class="time">Sự kiện - 12/2/2018</span>
+                        <p class="description">Các cửa hàng tại Hà Nội thông báo thời gian Đóng - Mở cửa Tết Mậu Tuất 2018, các bạn có thể dễ dàng theo dõi theo các khu vực Quận/Huyện thành phố Hà Nội.</p>
+                    </div>
+                </div>
+    
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="img/News/01-22.jpg" alt="" >
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#">Tiệc Tri ân đối tác hệ thống Cửa Hàng tại khu vực Hà Nội 2017</a>
+                        </h4>
+                        <span class="time">Sự kiện - 21/11/2017</span>
+                        <p class="description">Nhìn lại những hình ảnh ấn tượng trong bữa tiệc tri ân các đối tác hệ thống các cửa Hàng.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--app-->
+    <section class="app-container">
+        <p>Tải ứng dụng</p>
+        <div class="app">
+          <a href="#"> <img src="img/app Store.png" alt="logo app store" /> </a>
+          <a href="#"> <img src="img/CH play.png" alt="logo ch play" /> </a>
+        </div>
+        <input type="text" placeholder="Nhập email của bạn ..." />
+    </section>
+    <!--footer-->
+    <div class="footer-top">
+        <li>
+            <a href=""> <img src="" alt="" /> </a>
+        </li>
+        <li>Liên hệ</li>
+        <li>Tuyển dụng</li>
+        <li>Giới thiệu</li>
+        <li>
+            <i class="bx bxl-facebook"></i>
+            <i class="bx bxl-youtube"></i>
+            <i class="bx bxl-twitter"></i>
+        </li>
+    </div>
+    <div class="footer-center">
+        <p>
+            Địa chỉ: Học viện Công nghệ Bưu chính-Viễn thông <br /><!--xuong dong-->
+            Đặt hàng online: <b>0386527618</b>
+        </p>
+    </div>
+    <div class="footer-bottom">@tranvanhung</div>
+    </body>
+    <script>
+            
+        const header = document.querySelector("header") 
+        window.addEventListener("scroll",function(){
+            x = window.pageYOffset
+            if(x>0){
+                header.classList.add("sticky")
+            }
+            else{
+                header.classList.remove("sticky")
+            }
+        })
+    </script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="js/jwt-decode.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+
+</html>

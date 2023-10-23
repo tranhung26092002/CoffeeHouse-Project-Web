@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!--header-->
+    <header>
+      <div class="logo">
+        <img src="img/logo.webp" />
+      </div>
+      <div class="menu">
+        <li><a onclick="handleTrangchu()" href="#">Trang chủ</a></li>
+        <li><a onclick="handleFood()" href="#">Đồ ăn</a></li>
+        <li><a onclick="handleDrink()" href="#">Đồ uống</a></li>
+        <li><a onclick="handleNews()" href="#">Tin Tức</a></li>
+        <li><a onclick="handleAddress()" href="#">Địa chỉ</a></li>
+        <li><a onclick="handlePay()" href="#">Giỏ hàng</a></li>
+        <li><a onclick="handleBill()" href="#">Hóa đơn</a></li>
+      </div>
+      <div class="other">
+        <li>
+          <input placeholder="Tìm Kiếm " type="text" />
+          <i class="bx bx-search"></i>
+        </li>
+        <li>
+          <a href="#"> <i class="bx bx-user" onclick="inforUser()"></i> </a>
+        </li>
+        <li>
+          <a href="#"> <i class="name_user"></i> </a>
+        </li>
+        <!-- display name -->
+        <button type="button" class="btn-primary" onclick="handleLogoutUser()">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <section class="local">
+      <div class="container">
+        <div class="local-top-wrap">
+          <div class="local-top">
+            <div class="local-top-delivery local-top-item">
+              <i class="fas fa-newspaper" onclick="handleNews()"></i>
+            </div>
+            <div class="local-top-adress local-top-item">
+              <i class='fa-solid fa-location-dot' style='color: blue'></i>
+            </div>
+            <div class="payment-top-delivery payment-top-item">
+              <i class='fas fa-cart-plus' onclick="handlePay()"></i>
+            </div>
+            <div class="local-top-local local-top-item">
+              <i class="fas fa-money-check-alt" onclick="handleBill()"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="store-locations">
+        <div class="store-location-item">
+          <div class="store-title">
+            <h1 class="store-name">Các cửa hàng hoạt động</h1>
+          </div>
+        </div>
+
+        <div class="store-location-selector">
+          <select name="" id="location-selector">
+            <option value="">Chọn địa chỉ</option>
+            <option value="ha-dong">Hà Đông</option>
+            <option value="cau-giay">Cầu Giấy</option>
+            <option value="thanh-xuan">Thanh Xuân</option>
+            <option value="ba-dinh">Ba Đình</option>
+            <option value="hai-ba-trung">Hai Bà Trưng</option>
+            <option value="tay-ho">Tây Hồ</option>
+            <option value="long-bien">Long Biên</option>
+            <option value="hoang-mai">Hoàng Mai</option>
+          </select>
+          <div class="store-details">
+            <div class="store-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="store-name"> Aeon Mall Long Biên</span>
+            </div>
+            <div class="store-info">
+              <i class="fas fa-phone-alt"></i> Số điện thoại:
+              <a class="store-phone" href="tel:02466512026">0123456789</a>
+            </div>
+            <div class="store-info">
+              Địa chỉ: T1-TTTM Aeon Mall, Long Biên, Hà Nội
+            </div>
+            <div class="store-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="store-name"> Aeon Mall Hà Đông</span>
+            </div>
+            <div class="store-info">
+              <i class="fas fa-phone-alt"></i> Số điện thoại:
+              <a class="store-phone" href="tel:02466512026">0123456789</a>
+            </div>
+            <div class="store-info">
+              Địa chỉ: T1-TTTM Hà Đông, Dương Nội, Hà Đông, Hà Nội
+            </div>
+            <div class="store-info">
+              <i class="fas fa-map-marker-alt"></i>
+              <span class="store-name">
+                Học Viện Công Nghệ Bưu Chính Viễn Thông</span
+              >
+            </div>
+            <div class="store-info">
+              <i class="fas fa-phone-alt"></i> Số điện thoại:
+              <a class="store-phone" href="tel:02466512026">0123456789</a>
+            </div>
+            <div class="store-info">
+              Địa chỉ: Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--app-->
+    <section class="app-container">
+      <p>Tải ứng dụng</p>
+      <div class="app">
+        <a href="#"> <img src="img/app Store.png" alt="logo app store" /> </a>
+        <a href="#"> <img src="img/CH play.png" alt="logo ch play" /> </a>
+      </div>
+      <input type="text" placeholder="Nhập email của bạn ..." />
+    </section>
+    <!--footer-->
+    <div class="footer-top">
+      <li>
+        <a href=""> <img src="" alt="" /> </a>
+      </li>
+      <li>Liên hệ</li>
+      <li>Tuyển dụng</li>
+      <li>Giới thiệu</li>
+      <li>
+        <i class="bx bxl-facebook"></i>
+        <i class="bx bxl-youtube"></i>
+        <i class="bx bxl-twitter"></i>
+      </li>
+    </div>
+    <div class="footer-center">
+      <p>
+        Địa chỉ: Học viện Công nghệ Bưu chính-Viễn thông <br /><!--xuong dong-->
+        Đặt hàng online: <b>0386527618</b>
+      </p>
+    </div>
+    <div class="footer-bottom">@tranvanhung</div>
+  </body>
+
+  <script>
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", function () {
+      x = window.pageYOffset;
+      if (x > 0) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    });
+  </script>
+  
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  <script src="js/jwt-decode.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</html>
