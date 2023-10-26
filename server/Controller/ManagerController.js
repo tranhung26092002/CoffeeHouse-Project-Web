@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const productModel = require('../Models/ProductModel');
+const billModel = require('../Models/BillModel');
 const userModel = require('../Models/UserModel');
 
 const getListCustomer = async (req, res) => {
@@ -18,29 +18,28 @@ const getListCustomer = async (req, res) => {
 const getProducts = async (req, res) => {
     try {
         const userId = req.params.userId;
-        const user = await userModel.findById(userId);
 
-        const products = await productModel.find({ userId: user._id });
-        return res.status(200).send(products);
+        const bills = await billModel.find({ userId: userId });
+        return res.status(200).send(bills);
     } catch (error) {
         // log error
     }
 }
 
-const deleteUser = async (req, res) => {
-    try {
-        // delete user
-        const userId = req.params.userId;
-        await userModel.findByIdAndRemove(userId);
-        return res.status(200).send('delete user success');
-    } catch (error) {
-        // log error
-    } 
-}
+// const deleteUser = async (req, res) => {
+//     try {
+//         // delete user
+//         const userId = req.params.userId;
+//         await userModel.findByIdAndRemove(userId);
+//         return res.status(200).send('delete user success');
+//     } catch (error) {
+//         // log error
+//     } 
+// }
 
 
 module.exports = {
     getListCustomer:    getListCustomer,
     getProducts:        getProducts,
-    deleteUser:     deleteUser,
+    // deleteUser:     deleteUser,
 }

@@ -14,7 +14,7 @@ async function getCustomer() {
 
     // call api get listuser
     const response = await axios.get(`auth/manager/users/products/${userId}`);
-    showListProduct(response);
+    showList(response);
   } catch (error) {
     //error
     if (error.response.status === 401) {
@@ -24,40 +24,47 @@ async function getCustomer() {
 }
 getCustomer();
 
-function showListProduct(response) {
-  let totalAmount = 0;
-  let htmlUser = `<table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Productname</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>`;
-  response.data.forEach(function (product, index) {
-    const productPrice = parseFloat(product.price);
-    const productQuantity = parseInt(product.quantity);
-    const productTotal = productPrice * productQuantity;
-    totalAmount += productTotal;
+function showList(response) {
+  let htmlBill = ``;
+  // Kiểm tra nếu không có dữ liệu hóa đơn
+  if (!response.data || response.data.length === 0) {
+    document.querySelector(".bill").innerHTML = "<p>Không có hóa đơn nào.</p>";
+    return;
+  }
+  response.data.forEach(function (bill, index) {
+    const createdAtDate = new Date(bill.createdAt);
+    htmlBill += `<div class="bill-container">
+                  <h1>Hóa đơn số : ${index + 1}</h1>
+                  <div class="bill-details">
+                    <div class="customer-details">
+                      <h2>Thông tin khách hàng</h2>
+                      <p>Tên: ${bill.name}</p>
+                      <p>Email: ${bill.email}</p>
+                      <p>Số điện thoại: ${bill.phoneNumber}</p>
+                      <p>Địa chỉ: ${bill.address}</p>
+                    </div>
+                    <div class="payment-details">
+                      <h2>Thông tin thanh toán</h2>
+                      <p>Tổng số tiền: ${bill.totalAmount}</p>
+                      <p>Mã giảm giá: ${bill.discountCode}</p>
+                      <p>Phương thức thanh toán: ${bill.paymentMethod}</p>
+                      <p>Phương thức giao hàng: ${bill.deliveryMethod}</p>
+                    </div>
+                  </div>
 
-    htmlUser += `<tr>
-                        <td>${index + 1}</td>
-                        <td>${product.name}</td>
-                        <td>${product.price}</td>
-                        <td>${product.quantity}</td>
-                        <td>${productTotal}</td>
-                    </tr>`;
+                  <div class="created-at">
+                    <h2>Thời gian tạo hóa đơn</h2>
+                    <p>Ngày: ${createdAtDate.getDate()}/${createdAtDate.getMonth() + 1}/${createdAtDate.getFullYear()} - ${createdAtDate.getHours()}:${createdAtDate.getMinutes()}</p>
+                  </div>
+
+                  <div class="product-list">
+                    <h2>Danh sách sản phẩm</h2>
+                    <ul id="product-list-ul">
+                      ${bill.products.map((product) => `<li>${product.name} - ${product.price} x ${product.quantity} = ${product.price * product.quantity} VND</li>`).join('')}</ul>
+                  </div>
+                </div>`;
   });
-  htmlUser += `   </tbody>
-                </table>`;
-
-  document.querySelector(".list_user").innerHTML = htmlUser;
-  document.getElementById(
-    "total-amount"
-  ).textContent = `Bill for you : ${totalAmount} đồng`;
+  document.querySelector(".list_bill").innerHTML = htmlBill;
 }
 
 function handlePrint() {

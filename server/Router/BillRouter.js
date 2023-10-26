@@ -6,16 +6,16 @@ const authMiddleware = require('../Middleware/AuthMiddleware');
 
 
 router.get('/list', [
-    // authMiddleware.isAuthentication,
+    authMiddleware.isAuthentication,
 ],billController.getListBill);
 
 router.post('/create', [
-    // authMiddleware.isAuthentication,
+    authMiddleware.isAuthentication,
 ],billController.createBill);
 
 
 router.delete('/deleteAll', [
-    // authMiddleware.isAuthentication,
+    authMiddleware.isAuthentication,
 ],billController.deleteAll);
 
 module.exports = router;
