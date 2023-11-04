@@ -68,7 +68,6 @@ const createBill = async (req, res) => {
       paymentMethod: paymentMethod,
       deliveryMethod: deliveryMethod,
     });
-    console.log(newBill);
     // Trả về kết quả cho client
     res.status(200).send(newBill);
   } catch (error) {
