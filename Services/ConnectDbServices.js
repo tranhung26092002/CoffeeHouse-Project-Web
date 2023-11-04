@@ -8,6 +8,5 @@ async function connectDatabase(){
     catch(error){
         console.log('connect database false',error);
     }
-    mongoose.connect(`mongodb://127.0.0.1:${process.env.PORT_MONGO}/${process.env.DATABASE_NAME}`);
 }
 module.exports = connectDatabase;
